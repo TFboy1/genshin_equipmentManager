@@ -2,16 +2,59 @@
 #include "PlayerManager.h"
 #include <iostream>
 #include <fstream>
-//int PlayerManager::id = 0;
-// 将玩家信息保存到文件
-void PlayerManager::saveToFile() const {
-    std::ofstream file("players.txt");
-    if (file.is_open()) {
-        
 
+//int PlayerManager::id = 0;
+//// 将玩家信息保存到文件
+//void PlayerManager::saveToFile() const {
+//    std::ofstream file("players.txt");
+//    if (file.is_open()) {
+//        
+//
+//        for (const Player* player : players) {
+//            file << player->Getid() << " " << player->Getname() << " " << player->Getlevel() << "\n";
+//        }
+//        file.close();
+//    }
+//    else {
+//        std::cout << "Unable to open file for writing." << std::endl;
+//    }
+//}
+//
+//// 从文件中加载玩家信息
+//void PlayerManager::loadFromFile() {
+//    std::ifstream file("players.txt");
+//    
+//        
+//        players.clear(); // 清空原有玩家信息
+//        if (file.is_open()) {
+//           
+//        int id, level;
+//        std::string name;
+//        while (file >> id >> name >> level) {
+//            Player* player = new Player(id, name, level);
+//            players.push_back(player);
+//        }
+//        for (const Player* player : players) {
+//            if(player->Getid()!=PlayerManager::id)
+//                PlayerManager::id++;
+//        }
+//        file.close();
+//    }
+//}
+void PlayerManager::saveToFile() const {
+    std::ofstream file("players.dat", std::ios::binary);
+
+    if (file.is_open()) {
+        // 保存玩家数量
+        int numPlayers = players.size();
+        file.write(reinterpret_cast<const char*>(&numPlayers), sizeof(int));
+
+        // 保存每个玩家
         for (const Player* player : players) {
-            file << player->Getid() << " " << player->Getname() << " " << player->Getlevel() << "\n";
+            // 序列化 Player 对象
+            file.write(reinterpret_cast<const char*>(player), sizeof(Player));
         }
+
         file.close();
     }
     else {
@@ -19,28 +62,30 @@ void PlayerManager::saveToFile() const {
     }
 }
 
-// 从文件中加载玩家信息
 void PlayerManager::loadFromFile() {
-    std::ifstream file("players.txt");
-    
-        
-        players.clear(); // 清空原有玩家信息
-        if (file.is_open()) {
-           
-        int id, level;
-        std::string name;
-        while (file >> id >> name >> level) {
-            Player* player = new Player(id, name, level);
+    std::ifstream file("players.dat", std::ios::binary);
+
+    players.clear();
+
+    if (file.is_open()) {
+        // 读取玩家数量
+        int numPlayers;
+        file.read(reinterpret_cast<char*>(&numPlayers), sizeof(int));
+
+        // 读取每个玩家
+        for (int i = 0; i < numPlayers; ++i) {
+            // 反序列化 Player 对象
+            Player* player = new Player();
+            file.read(reinterpret_cast<char*>(player), sizeof(Player));
             players.push_back(player);
         }
         for (const Player* player : players) {
-            if(player->Getid()!=PlayerManager::id)
-                PlayerManager::id++;
+            id++;
         }
+
         file.close();
     }
 }
-
 // 构造函数中加载玩家信息
 PlayerManager::PlayerManager() :id(0){
 
@@ -49,7 +94,7 @@ PlayerManager::PlayerManager() :id(0){
 
 // 析构函数中保存玩家信息
 PlayerManager::~PlayerManager() {
-    saveToFile();
+    
 }
 
 // 添加玩家
@@ -86,6 +131,9 @@ void PlayerManager::removePlayer(Player* player) {
 
 // 显示所有玩家
 void PlayerManager::displayAllPlayers() const {
+    if (players.empty()) {
+    cout<<"暂无玩家"<<endl;
+    }
     for (const Player* player : players) {
         std::cout << "Player ID: " << player->Getid() << ", Name: " << player->Getname() << ", Level: " << player->Getlevel() << std::endl;
     }

@@ -13,7 +13,7 @@ private:
     /*static int id;*/
     int id;
 public:
-    PlayerManager();
+PlayerManager();
 ~PlayerManager();
     // Ìí¼ÓÍæ¼Ò
     void addPlayer(Player* player);

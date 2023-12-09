@@ -1,5 +1,5 @@
 #include"Player.h"
-
+Player::Player() {}
 //ªÒ»°id
 int Player::Getid() const { return id; }
 
