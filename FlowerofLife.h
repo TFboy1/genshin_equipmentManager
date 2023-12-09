@@ -23,7 +23,7 @@ public:
 
 	FlowerofLife(int HP = 717) :HP(HP) {
 		srand((unsigned int)time(NULL));
-		glossary = new int[4];
+		glossary = new int[6];
 		glossary[0] = rand() % 9;
 		do {
 			glossary[1] = rand() % 9;
@@ -51,7 +51,9 @@ public:
 	}//初始化生之花的四个副词条
 
 	~FlowerofLife() {
-		delete[] glossary;
+		if (glossary != nullptr) {
+			delete[] glossary;
+		}
 	}//析构 
 
 	bool strengthen() {
@@ -63,7 +65,7 @@ public:
 		system("cls");
 		cout << "\033[34m" << "强化后:" << "\033[0m" << '\n';
 		this->HP += 816;//提升主词条 
-		upid();//提升四级 
+		upid();
 		int a;
 		do {
 			a = rand();
@@ -86,5 +88,6 @@ public:
 private://主词条  
 	int HP;//固定生命值 
 	int* glossary;//词条数组 
+	
 };
 #endif

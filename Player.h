@@ -24,6 +24,7 @@ private:
     EquipmentManager equipmentManager;
 
 public:
+    Player();
     //»ñÈ¡id
     int Getid() const;
     void Setid(int id);

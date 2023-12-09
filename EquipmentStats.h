@@ -11,13 +11,11 @@ using namespace std;
 //圣遗物副词条 
 class EquipmentStats {
 public:
-	EquipmentStats(int count = 1, int hp = 0, int atk = 0, int def = 0, double Hp = 0, double Atk = 0, double Def = 0, double energyRechange = 0, int elementalMastery = 0,
+	EquipmentStats(int count=1, int hp = 0, int atk = 0, int def = 0, double Hp = 0, double Atk = 0, double Def = 0, double energyRechange = 0, int elementalMastery = 0,
 		double critRate = 0, double critDmg = 0, int id = 0) :hp(hp), atk(atk), def(def), Hp(Hp), Atk(Atk), Def(Def), energyRechange(energyRechange), elementalMastery(elementalMastery),
 		critRate(critRate), critDmg(critDmg), id(id), count(count) {}//初始化圣遗物副词条 
 	~EquipmentStats() {}
-	void setcount() {
-		this->count = 0;
-	}//设置count
+	
 	int getcount() {
 		return count;
 	}//返回cout

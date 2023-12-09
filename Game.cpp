@@ -1,9 +1,20 @@
 ﻿// Game.cpp
 #include "Game.h"
-
+// ANSI 转义码
+#define RESET   "\033[0m"
+#define BOLD    "\033[1m"
+#define ITALIC  "\033[3m"
+#define UNDERLINE "\033[4m"
+#define RED     "\033[31m"
+#define GREEN   "\033[32m"
+#define YELLOW  "\033[33m"
+#define BLUE    "\033[34m"
+#define MAGENTA "\033[35m"
+#define CYAN    "\033[36m"
+#define WHITE   "\033[37m"
 Game::Game() {
     // Constructor implementation, if needed
-    cout << "原神启动！！" << endl;
+    cout << RED << "原神" << RESET << "启动" <<  "！！" << RESET << std::endl;
 }
 
 Game::~Game() {
@@ -118,7 +129,7 @@ void Game::startGame() {
     PlayerManager playerManager;
     PlayerFactory playerFactory = PlayerFactory::getInstance();
 
-    cout << "欢迎来到圣遗物管理系统：" << endl;
+    cout << "欢迎来到"<<BLUE<<"圣遗物管理系统：" <<RESET<< endl;
     /*cout << "开始游戏请按1" << endl;
     int choice = 0;
     cin>> choice;

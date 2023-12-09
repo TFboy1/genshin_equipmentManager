@@ -166,12 +166,15 @@ public:
 			system("cls");
 			cout << "圣遗物已经满级" << '\n';
 			return false;
-		};//判断是否满级 
+		}//判断是否满级
+		else {
+			upid();
+		}
 		system("cls");
 		cout << "\033[34m" << "强化后:" << "\033[0m" << '\n';
 		if (glossary[4] == 0) {
 			this->HP += 7.92;
-			upid();
+			
 			int a;
 			do {
 				a = rand();
@@ -191,7 +194,7 @@ public:
 		}//if
 		else if (glossary[4] == 1) {
 			this->ATK += 7.92;
-			upid();
+		
 			int a;
 			do {
 				a = rand();
@@ -211,7 +214,7 @@ public:
 		}//else if 
 		else if (glossary[4] == 2) {
 			this->DEF += 9.62;
-			upid();
+			
 			int a;
 			do {
 				a = rand();
@@ -231,7 +234,7 @@ public:
 		}//else if 
 		else if (glossary[4] == 3) {
 			this->HealingBonus += 6.1;
-			upid();
+			
 			int a;
 			do {
 				a = rand();
@@ -251,7 +254,7 @@ public:
 		}//else if 
 		else if (glossary[4] == 4) {
 			this->ElementalMastery += 32;
-			upid();
+			
 			int a;
 			do {
 				a = rand();
@@ -271,7 +274,7 @@ public:
 		}//else if 
 		else if (glossary[4] == 5) {
 			this->CRITRate += 5.28;
-			upid();
+			
 			int a;
 			do {
 				a = rand();
@@ -291,7 +294,7 @@ public:
 		}//else if 
 		else if (glossary[4] == 6) {
 			this->CRITDmg += 10.58;
-			upid();
+			
 			int a;
 			do {
 				a = rand();
