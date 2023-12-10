@@ -1,17 +1,6 @@
 ﻿// Game.cpp
 #include "Game.h"
-// ANSI 转义码
-#define RESET   "\033[0m"
-#define BOLD    "\033[1m"
-#define ITALIC  "\033[3m"
-#define UNDERLINE "\033[4m"
-#define RED     "\033[31m"
-#define GREEN   "\033[32m"
-#define YELLOW  "\033[33m"
-#define BLUE    "\033[34m"
-#define MAGENTA "\033[35m"
-#define CYAN    "\033[36m"
-#define WHITE   "\033[37m"
+
 Game::Game() {
     // Constructor implementation, if needed
     cout << RED << "原神" << RESET << "启动" <<  "！！" << RESET << std::endl;
@@ -51,10 +40,7 @@ Player* Game::chosePlayer() {
         cout << "请输入要选择的角色id:" << endl;
         cin >> id;
         const std::type_info& idType = typeid(id);
-        if (idType != typeid(int)) {
-            cout << "请输入正确的ID" << endl;
-            return nullptr;
-        }
+        
         Player* player = playerManager.getPlayerById(id);
         if (player == nullptr) {
             cout << "请输入正确的ID" << endl;
@@ -86,14 +72,17 @@ void Game::equipmentSystem(Player* player) {
         switch (a) {
         case 1:M.removeEquipment(); break;
         case 2:M.addEquipment(); break;
-        case 3:if (M.FlowerofLife::getcount() == 0 && M.PlumeofDeath::getcount() == 0 && M.SandsofEon::getcount() == 0 && M.GobletofEonothem::getcount() == 0 && M.CircletofLogos::getcount() == 0) {
+        case 3:if (M.getEquipments().empty()) {
             system("cls");
             M.displayEquipment(); break;
         }
-              else
-            M.strengthenAll(); M.displayEquipment(); break;
+              else {
+            system("cls");
+            M.strengthenAll(); break;
+        }
+            
         case  4:system("cls"); M.displayEquipment(); break;
-        case 0:break;
+        case 0:system("cls"); break;
         default:cout << "输入错误" << endl; break;
         }
     } while (a);

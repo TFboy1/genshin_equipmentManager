@@ -66,6 +66,9 @@
     <ClCompile Include="SandsofEon.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="stats.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h">
@@ -78,9 +81,6 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="PlayerFactory.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="Equipment.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="EquipmentManager.h">
@@ -107,7 +107,7 @@
     <ClInclude Include="CircletofLogos.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="EquipmentStats.h">
+    <ClInclude Include="Equipment.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="FlowerofLife.h">
@@ -120,6 +120,9 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="SandsofEon.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="stats.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
