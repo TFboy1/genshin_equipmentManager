@@ -68,3 +68,13 @@ EquipmentManager Player::getEquipmentManager()
 {
 	return equipmentManager;
 }
+
+vector<Equipment> Player::getAllEquipment()
+{
+	return equipments;
+}
+
+void Player::saveEquipment()
+{
+	
+}

@@ -143,14 +143,14 @@
     <ClCompile Include="PremiumPlayer.cpp" />
     <ClCompile Include="RechargeManager.cpp" />
     <ClCompile Include="SandsofEon.cpp" />
+    <ClCompile Include="stats.cpp" />
     <ClCompile Include="Subject.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CircletofLogos.h" />
-    <ClInclude Include="Equipment.h" />
     <ClInclude Include="EquipmentFactory.h" />
     <ClInclude Include="EquipmentManager.h" />
-    <ClInclude Include="EquipmentStats.h" />
+    <ClInclude Include="Equipment.h" />
     <ClInclude Include="FlowerofLife.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GobletofEonothem.h" />
@@ -163,6 +163,7 @@
     <ClInclude Include="PremiumPlayer.h" />
     <ClInclude Include="RechargeManager.h" />
     <ClInclude Include="SandsofEon.h" />
+    <ClInclude Include="stats.h" />
     <ClInclude Include="Subject.h" />
   </ItemGroup>
   <ItemGroup>

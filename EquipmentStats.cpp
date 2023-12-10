@@ -1,1 +1,1 @@
-#include "EquipmentStats.h"
+#include "Equipment.h"

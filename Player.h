@@ -62,6 +62,10 @@ double getBalance() const;
 // …Ë÷√”‡∂Ó
 void setBalance(double amount); 
 EquipmentManager getEquipmentManager();
+vector<Equipment>  getAllEquipment();
+void saveEquipment();
+private :
+    vector<Equipment> equipments;
 };
 
 #endif
