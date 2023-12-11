@@ -20,7 +20,7 @@ public:
     void initialElements();
 
 private:
-    std::vector<Stats> attributess;
+    
 };
 
 #endif

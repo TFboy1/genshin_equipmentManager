@@ -20,10 +20,11 @@ using namespace std;
 class EquipmentManager {
 public:
     EquipmentManager() {
-        
+        loud();
     }
 
     void strengthenAll() {
+        loud();
         flowerOfLife.strengthen();
         plumeOfDeath.strengthen();
         sandsofEon.strengthen();
@@ -33,6 +34,7 @@ public:
     }
 
     bool removeEquipment() {
+        loud();
         system("cls");
         if (flowerOfLife.getcount() == 0 && plumeOfDeath.getcount() == 0 && sandsofEon.getcount() == 0 &&
             gobletofEonothem.getcount() == 0 && circletofLogos.getcount() == 0) {
@@ -67,6 +69,7 @@ public:
     }
 
     bool addEquipment() {
+        loud();
         system("cls");
         if (flowerOfLife.getcount() == 1 && plumeOfDeath.getcount() == 1 && sandsofEon.getcount() == 1 &&
             gobletofEonothem.getcount() == 1 && circletofLogos.getcount() == 1) {
@@ -101,6 +104,7 @@ public:
     }
 
     bool displayEquipment() {
+        loud();
         if (flowerOfLife.getcount() == 0 && plumeOfDeath.getcount() == 0 && sandsofEon.getcount() == 0 &&
             gobletofEonothem.getcount() == 0 && circletofLogos.getcount() == 0) {
             cout << "圣遗物都被拆卸，请等待返回" << '\n';
@@ -118,17 +122,32 @@ public:
     }
 
     void saveEquipment() {
+        loud();
         if (flowerOfLife.getcount() == 1) equipments.push_back(flowerOfLife);
         if (plumeOfDeath.getcount() == 1) equipments.push_back(plumeOfDeath);
         if (sandsofEon.getcount() == 1) equipments.push_back(sandsofEon);
         if (gobletofEonothem.getcount() == 1) equipments.push_back(gobletofEonothem);
         if (circletofLogos.getcount() == 1) equipments.push_back(circletofLogos);
+        for (Equipment& equipment : equipments) {
+        equipment.setPlayerName(playerName);
+        equipment.saveToFile();
+        }
     }
 
     vector<Equipment> getEquipments() {
         return equipments;
     }
-
+    void setPlayerName(string playerName) {
+        this->playerName = playerName;
+    }
+    string getPlayerName() {
+		return playerName;
+	}
+    void loud() {
+        for (Equipment& equipment : equipments) {
+            equipment.loadFromFile(playerName);
+        }
+    }
 private:
     FlowerofLife flowerOfLife;
     PlumeofDeath plumeOfDeath;
@@ -136,6 +155,7 @@ private:
     GobletofEonothem gobletofEonothem;
     CircletofLogos circletofLogos;
     vector<Equipment> equipments;
+    string playerName;
     
 };
 
