@@ -265,7 +265,7 @@ public:
     void showElements();
 private:
 
-    vector<Stats> attributess;
+    
 };
 
 #endif

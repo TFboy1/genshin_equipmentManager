@@ -22,6 +22,9 @@
 #include<map>
 #include "stats.h"
 #include<random>
+#include <string>
+#include <fstream>
+using namespace std;
 class Equipment {
 public:
     Equipment(int count = 1, int hp = 0, int atk = 0, int def = 0, double Hp = 0, double Atk = 0, double Def = 0,
@@ -31,9 +34,18 @@ public:
     int  getcount();
     void falsecount();
     void truecount();
+ 
+    void saveToFile();
+    void loadFromFile(string name);
+    void setPlayerName(string playerName);
+   
+    string getPlayerName();
+
     private:
     int count;
+    
     protected:
+        std::string playerName;
          std::vector<Stats> attributes;
          const std::vector<std::string> elements = {
           "防御力", "生命值", "攻击力",  "能量充能效率", "元素精通", "暴击率", "暴击伤害","元素伤害加成"};

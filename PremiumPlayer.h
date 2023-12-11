@@ -1,31 +1,53 @@
-#ifndef PREMIUMPLAYER_H
-#define PREMIUMPLAYER_H
-
-#include"Player.h"
+#ifndef RECHARGEMANAGER_H
+#define RECHARGEMANAGER_H
+#include <iostream>
+#include <vector>
+#include <algorithm>
+#include <cstring>
+#include <iomanip>
 
 using namespace std;
 
-class PremiumPlayer : public Player {
-public:
-	PremiumPlayer(Player* player)
-		: Player(player->Getid(), player->Getname(), player->Getlevel()), player(player) {}
-
-	void addPremiumBenefits() {
-		// Implement premium benefits
-
-	}
-
-	void displayEquipment() {
-		// Implement equipment display logic
-
-	}
-
-	void accessGameStore() {
-		// Implement game store access logic
-
-	}
-
+class RechargeManager {
 private:
-	Player* player;
+    Player* player;
+    double rechargeOption;
+    vector<pair<string, double>> availableItems;
+    bool isBalanceSufficient(Player& player, double cost)
+    {
+        return player.getBalance() >= cost;
+    }
+public:
+    RechargeManager() : rechargeOption(0.0) {
+        availableItems = { {"Item1", 50.0}, {"Item2", 100.0}, {"Item3", 200.0} };
+    }
+
+    void setrechargeOption(double newrechargeOption)
+    {
+        rechargeOption = newrechargeOption;
+    }
+
+    void recharge(Player& player, double amount);
+    //{
+        // Recharge player's balance
+    //}
+
+    void openGameStore(Player& player);
+    //{
+        // Implement opening game store logic
+   // }
+
+    void purchaseItem(Player& player, Equipment item);
+    // {
+         // Implement player purchasing item logic
+     //}
+
+    void displayAvailableItems(Player& player);
+    //{
+        // Implement displaying available items logic
+   // }
+    void selectRechargeOption();
+    // {
+     //}
 };
 #endif

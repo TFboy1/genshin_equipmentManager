@@ -1,5 +1,8 @@
 #include"Player.h"
-Player::Player() {}
+Player::Player() {
+	equipmentManager.setPlayerName(name);
+	equipments=equipmentManager.getEquipments();
+}
 //获取id
 int Player::Getid() const { return id; }
 
@@ -17,7 +20,8 @@ int Player::Getlevel() const { return level; }
 // 构造函数
 Player::Player(int id, string Name, int level)
 	: id(id), name(Name), level(level), isPremiumPlayer(false), balance(0.0) {
-	
+	equipmentManager.setPlayerName(name);
+	equipments = equipmentManager.getEquipments();
 }
 
 // 添加Observer
