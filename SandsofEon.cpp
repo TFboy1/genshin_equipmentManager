@@ -3,8 +3,9 @@
 #include <random>
 
 SandsofEon::SandsofEon() {
+    Stats stats("÷Œ¡∆º”≥…", 0, 0);
+    attributes.push_back(stats);
     
-      
     initialElements();
 }
 

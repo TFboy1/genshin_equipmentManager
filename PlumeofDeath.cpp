@@ -3,7 +3,7 @@
 
 PlumeofDeath::PlumeofDeath()
 {
-    
+    attributes[2].setStats(1);
     initialElements();
 }
 
@@ -16,18 +16,9 @@ void PlumeofDeath::showElements()
     std::cout << "\033[33m" << "空之杯:" << "\033[0m" << '\n';
 
     std::cout << "\033[32m" << "主词条:" << "\033[0m" << '\n';
-    while (true) {
-        std::random_device rd;
-        std::mt19937 gen(rd());
-
-        std::uniform_int_distribution<int> distribution(0, attributes.size() - 1);
-        int n = distribution(gen);
-        if (attributes[n].getStats() > 0)
-        {
-            std::cout << attributes[n].getName() << attributes[n].getEle() + 2 << "%" << '\n';
-            break;
-        }
-    }
+   
+            std::cout << attributes[2].getName() << attributes[2].getEle() + 2 << "%" << '\n';
+     
     std::cout << "\033[32m" << "副词条:" << "\033[0m" << '\n';
     for (int i = 0; i < attributes.size(); i++) {
         if (attributes[i].getStats() > 0) {

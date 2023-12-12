@@ -23,8 +23,8 @@ void Equipment::truecount() {
 }
 void Equipment::saveToFile()
 {
-    string filename="equipment.dat";
-    ofstream outFile(filename, ios::binary);
+    string filename="equipment.txt";
+    ofstream outFile(filename, ios::app);
 
     if (!outFile.is_open()) {
         cerr << "Error opening file: " << filename << endl;
@@ -79,8 +79,8 @@ void Equipment::saveToFile()
 //    inFile.close();
 //}
 void Equipment::loadFromFile(string name) {
-    string filename = "equipment.dat";
-    ifstream inFile(filename, ios::binary);
+    string filename = "equipment.txt";
+    ifstream inFile(filename);
 
     if (!inFile.is_open()) {
         cerr << "Error opening file: " << filename << endl;

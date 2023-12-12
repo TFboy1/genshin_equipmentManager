@@ -5,6 +5,10 @@
 
 GobletofEonothem::GobletofEonothem()
 {
+    Stats stats("元素伤害加成", 0, 0);
+    attributes.push_back(stats);
+    Stats stats1("物理伤害加成", 0, 0);
+    attributes.push_back(stats1);
     initialElements();
 }
 
@@ -47,7 +51,7 @@ void GobletofEonothem::showElements() {
 
         std::uniform_int_distribution<int> distribution(0, attributes.size() - 1);
         int n = distribution(gen);
-        if (attributes[n].getStats() > 0)
+        if (attributes[n].getStats() > 0&&(n==0||n==1||n==2||n==4))
         {
             std::cout << attributes[n].getName() << attributes[n].getEle() + 2 << "%" << '\n';
             break;

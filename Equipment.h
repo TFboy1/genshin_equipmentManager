@@ -48,7 +48,7 @@ public:
         std::string playerName;
          std::vector<Stats> attributes;
          const std::vector<std::string> elements = {
-          "防御力", "生命值", "攻击力",  "能量充能效率", "元素精通", "暴击率", "暴击伤害","元素伤害加成"};
+          "防御力", "生命值", "攻击力",  "能量充能效率", "元素精通", "暴击率", "暴击伤害"};
 
 };
 
