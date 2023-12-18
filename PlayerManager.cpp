@@ -11,7 +11,7 @@ void PlayerManager::saveToFile() const {
         
 
         for (Player* player : players) {
-            file << player->Getid() << " " << player->Getname() << " " << player->Getlevel() << "\n";
+            file << player->Getid() << " " << player->Getname() << " " << player->Getlevel() << " " << player->getBalance() << "\n";
             
             
         }
@@ -24,16 +24,16 @@ void PlayerManager::saveToFile() const {
 
 // 从文件中加载玩家信息
 void PlayerManager::loadFromFile() {
-    std::ifstream file("players.txt");
+    ifstream file("players.txt");
     
         
         players.clear(); // 清空原有玩家信息
         if (file.is_open()) {
            
-        int id, level;
+        int id, level,balance;
         std::string name;
-        while (file >> id >> name >> level) {
-            Player* player = new Player(id, name, level);
+        while (file >> id >> name >> level >> balance) {
+            Player* player = new Player(id, name, level, balance);
             players.push_back(player);
         }
         for (const Player* player : players) {
@@ -137,7 +137,7 @@ void PlayerManager::displayAllPlayers() const {
     cout<<"暂无玩家"<<endl;
     }
     for (const Player* player : players) {
-        std::cout << "Player ID: " << player->Getid() << ", Name: " << player->Getname() << ", Level: " << player->Getlevel() << std::endl;
+        cout << "Player ID: " << player->Getid() << ", Name: " << player->Getname()<<"，level:"<<player->Getlevel() << "，balance:"<< player->getBalance()<<endl;
     }
 }
 

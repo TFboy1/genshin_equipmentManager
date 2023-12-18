@@ -6,6 +6,7 @@
 #include <cstring>
 #include"EquipmentManager.h"
 #include "Observer.h"
+#include <sstream>
 
 #include <fstream>
 using namespace std;
@@ -14,7 +15,7 @@ using namespace std;
 
 // Player类
 class Player {
-private:
+protected:
     int id;
     string name;
     int level;
@@ -22,6 +23,7 @@ private:
     bool isPremiumPlayer;
     double balance;
     EquipmentManager equipmentManager;
+    vector<int> inventory;  // 存储购买的商品ID
 
 public:
     Player();
@@ -36,7 +38,7 @@ public:
     int Getlevel() const;
 
     // 构造函数
-    Player(int id, string name, int level);
+    Player(int id, string name, int level,double balance);
 
     // 添加Observer
     void addObserver(Observer* observer);
@@ -63,9 +65,14 @@ double getBalance() const;
 void setBalance(double amount); 
 EquipmentManager getEquipmentManager();
 vector<Equipment>  getAllEquipment();
-void saveEquipment();
+vector<int> getInventory();
+void saveInventoryToFile();
+void loadInventoryFromFile();
+
+//背包
+void addToInventory(int productId);
+
 private :
     vector<Equipment> equipments;
 };
-
 #endif

@@ -15,9 +15,10 @@ Player* Game::createPlayer()
 {
     string name;
     int level = 0;
+    double balance = 0;
     cout << "请输入角色名：" << endl;
     cin >> name;
-    Player* player = playerFactory.createPlayer(name, level);
+    Player* player = playerFactory.createPlayer(name, level,balance);
     playerManager.addPlayer(player);
     PlayerObserver playerObserve(player->Getid());
     subject.attach(&playerObserve);
@@ -43,7 +44,7 @@ Player* Game::chosePlayer() {
         
         Player* player = playerManager.getPlayerById(id);
         if (player == nullptr) {
-            cout << "请输入正确的ID" << endl;
+            
             return nullptr;
         }
         else {
@@ -87,11 +88,60 @@ void Game::equipmentSystem(Player* player) {
         }
     } while (a);
 }
+
+
+
+
+void Game::PremiumPlayerSystem()
+{
+    Player* selectedPlayer = chosePlayer();
+    if (selectedPlayer == nullptr) {
+        cout << "请选择正确的角色ID再打开商店。" << endl;
+        return;
+    }
+    PremiumPlayer  PremiumPlayer(*selectedPlayer,playerManager);
+    if (PremiumPlayer.getBalance() > 30) {
+        int a;
+        do {
+            cout << "欢迎来到高级玩家系统:" << endl;
+            cout << "提供高级玩家特权请输入1，访问游戏商店请输入2，退出请输入0" << '\n';
+            cin >> a;
+            switch (a) {
+            case 1:PremiumPlayer.addPremiumBenefits(); break;
+            case 2:PremiumPlayer.accessGameStore(); break;
+            case 0:break;
+            default:cout << "输入错误" << endl; break;
+            }
+        } while (a);
+    }
+    else {
+        cout << "您不是VIP" << endl;
+    }
+    
+}
+void Game::chargeSystem()
+{
+    // 检查是否选择了角色
+    Player* selectedPlayer = chosePlayer();
+    if (selectedPlayer == nullptr) {
+        cout << "请选择正确的角色ID再打开商店。" << endl;
+        return;
+    }
+
+    // 创建一个带有所选角色的商店实例
+    Store store(*selectedPlayer,playerManager);
+    double amount;
+    cout << "请输入充值金额：" << endl;
+    cin >> amount;
+    store.deposit(amount);
+    playerManager.saveToFile();
+   
+}
 void Game::playerSystem() {
     int a = 1;
     do {
         cout << "这是游戏角色菜单:" << endl;
-        cout << "创建一个角色请输入1，删除角色请输入2，显示所有角色请输入3，选择角色请输入4，退出请输入0" << '\n';
+        cout << "创建一个角色请输入1，删除角色请输入2，显示所有角色请输入3，选择角色请输入4，进入VIP系统请输入5，进入商店或进行充值请按6，退出请输入0" << '\n';
         cin >> a;
         switch (a) {
         case 1:createPlayer(); break;
@@ -107,7 +157,17 @@ void Game::playerSystem() {
                 cout << "请输入正确的ID" << endl;
             }
         }
-
+        /*case 5: openStore(); break;*/
+        case 5: PremiumPlayerSystem(); break;
+        case 6: {
+            // 检查是否选择了角色
+       Player* selectedPlayer = chosePlayer();
+       if (selectedPlayer == nullptr) {
+           cout << "请选择正确的角色ID再打开商店。" << endl;
+           return;
+       }
+       openStore(*selectedPlayer,playerManager); break;
+        }
         case 0:break;
         default:cout << "输入错误" << endl; break;
         }
@@ -118,7 +178,7 @@ void Game::startGame() {
     PlayerManager playerManager;
     PlayerFactory playerFactory = PlayerFactory::getInstance();
 
-    cout << "欢迎来到"<<BLUE<<"圣遗物管理系统：" <<RESET<< endl;
+    cout << "欢迎来到"<<BLUE<<"模拟原神系统：" <<RESET<< endl;
     /*cout << "开始游戏请按1" << endl;
     int choice = 0;
     cin>> choice;
@@ -171,6 +231,12 @@ void Game::startGame() {
     }*/
 
 
+}
+
+void Game::openStore(Player& player,PlayerManager &playerManager)
+{
+    Store store(player, playerManager);
+    store.openStore();
 }
 
 

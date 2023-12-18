@@ -144,6 +144,7 @@
     <ClCompile Include="RechargeManager.cpp" />
     <ClCompile Include="SandsofEon.cpp" />
     <ClCompile Include="stats.cpp" />
+    <ClCompile Include="Store.cpp" />
     <ClCompile Include="Subject.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -164,11 +165,11 @@
     <ClInclude Include="RechargeManager.h" />
     <ClInclude Include="SandsofEon.h" />
     <ClInclude Include="stats.h" />
+    <ClInclude Include="Store.h" />
     <ClInclude Include="Subject.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="ClassDiagram.cd" />
-    <None Include="ClassDiagram1.cd" />
+    <None Include="ClassDiagram2.cd" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

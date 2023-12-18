@@ -34,7 +34,6 @@ public:
     int  getcount();
     void falsecount();
     void truecount();
- 
     void saveToFile();
     void loadFromFile(string name);
     void setPlayerName(string playerName);
@@ -45,10 +44,17 @@ public:
     int count;
     
     protected:
+<<<<<<< Updated upstream
         std::string playerName;
          std::vector<Stats> attributes;
          const std::vector<std::string> elements = {
           "防御力", "生命值", "攻击力",  "能量充能效率", "元素精通", "暴击率", "暴击伤害","元素伤害加成"};
+=======
+         string playerName;
+         vector<Stats> attributes;
+         const vector<string> elements = {
+          "防御力", "生命值", "攻击力",  "能量充能效率", "元素精通", "暴击率", "暴击伤害"};
+>>>>>>> Stashed changes
 
 };
 
