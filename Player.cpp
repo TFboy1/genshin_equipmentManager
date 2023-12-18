@@ -2,6 +2,7 @@
 Player::Player() {
 	equipmentManager.setPlayerName(name);
 	equipments=equipmentManager.getEquipments();
+	loadInventoryFromFile();
 }
 //获取id
 int Player::Getid() const { return id; }
@@ -18,8 +19,8 @@ string Player::Getname() const { return name; }
 int Player::Getlevel() const { return level; }
 
 // 构造函数
-Player::Player(int id, string Name, int level)
-	: id(id), name(Name), level(level), isPremiumPlayer(false), balance(0.0) {
+Player::Player(int id, string Name, int level,double balance)
+	: id(id), name(Name), level(level), isPremiumPlayer(false), balance(balance) {
 	equipmentManager.setPlayerName(name);
 	equipments = equipmentManager.getEquipments();
 }
@@ -64,8 +65,6 @@ double Player::getBalance() const {
 void Player::setBalance(double amount) {
 	balance = amount;
 	notifyObservers();
-
-	
 }
 
 EquipmentManager Player::getEquipmentManager()
@@ -78,7 +77,55 @@ vector<Equipment> Player::getAllEquipment()
 	return equipments;
 }
 
-void Player::saveEquipment()
+vector<int> Player::getInventory()
 {
-	
+	return inventory;
+}
+
+void Player::saveInventoryToFile()
+{
+	ofstream fout("inventory.txt", ios::app);
+	if (!fout) {
+		cout << "文件打开失败！" << endl;
+		return;
+	}
+	for (int i = 0; i < inventory.size(); i++) {
+		fout<<name<<"," << inventory[i] << endl;
+	}
+	fout.close();
+}
+
+void Player::loadInventoryFromFile()
+{
+	ifstream fin("inventory.txt");
+	if (!fin.is_open()) {
+		cout << "无法打开文件 'inventory.txt'！" << endl;
+		return;
+	}
+
+	inventory.clear();  // Clear existing inventory before loading from file
+
+	string line;
+	while (getline(fin, line)) {
+		stringstream ss(line);
+		string playerName;
+		string productId;
+
+		getline(ss, playerName, ',');
+		getline(ss, productId);
+
+		// Assuming the loaded inventory belongs to the current player
+		if (playerName == this->name) {
+			inventory.push_back(stoi(productId));
+		}
+	}
+
+	fin.close();
+}
+
+
+void Player::addToInventory(int productId) {
+    inventory.push_back(productId);
+	saveInventoryToFile();
+    cout << "商品已添加到您的库存。" << endl;
 }

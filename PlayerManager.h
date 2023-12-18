@@ -1,4 +1,7 @@
 
+#pragma once
+#ifndef PLAYERMANAGER_H
+#define PLAYERMANAGER_H
 #include <iostream>
 #include <vector>
 #include <algorithm>
@@ -8,11 +11,11 @@ using namespace std;
 class PlayerManager {
 private:
     vector<Player*> players;
-    void saveToFile() const;
-    void loadFromFile();
     /*static int id;*/
     int id;
 public:
+void saveToFile() const;
+void loadFromFile();
 PlayerManager();
 ~PlayerManager();
     // Ìí¼ÓÍæ¼Ò
@@ -32,3 +35,4 @@ Player* getPlayerById(int id);
 void updatePlayer(Player* player);
 
 };
+#endif // PLAYERMANAGER_H

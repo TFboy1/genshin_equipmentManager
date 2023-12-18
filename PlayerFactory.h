@@ -4,7 +4,7 @@ class PlayerFactory{
 public:
 	PlayerFactory();
 	static PlayerFactory getInstance();
-	Player* createPlayer(string name,int level);
+	Player* createPlayer(string name,int level, double balance);
 	~PlayerFactory();
 	
 private:

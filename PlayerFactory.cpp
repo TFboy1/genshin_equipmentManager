@@ -1,8 +1,8 @@
 #include "PlayerFactory.h"
 PlayerFactory PlayerFactory::instance;
 int PlayerFactory::playerCounter = 0;
-Player* PlayerFactory::createPlayer(string name, int level=0) {
-Player* player = new Player(playerCounter++,name, level);
+Player* PlayerFactory::createPlayer(string name, int level=0,double balance=0) {
+Player* player = new Player(playerCounter++,name, level,balance);
 	
 
 return player;

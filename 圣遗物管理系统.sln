@@ -5,6 +5,13 @@ VisualStudioVersion = 17.6.33723.286
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "圣遗物管理系统", "圣遗物管理系统.vcxproj", "{F273DCAD-6C1A-4FE6-9FAF-3D339A78A4F9}"
 EndProject
+<<<<<<< Updated upstream
+=======
+Project("{C7167F0D-BC9F-4E6E-AFE1-012C56B48DB5}") = "基于原神的圣遗物管理系统", "..\基于原神的圣遗物管理系统\基于原神的圣遗物管理系统.wapproj", "{FA73DDEA-9318-4065-8B0A-7DCAE209C262}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "原神圣遗物管理系统安装", "..\Setup\Setup.vdproj", "{80F02A86-35B4-42EA-AAC1-3C970F546524}"
+EndProject
+>>>>>>> Stashed changes
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64

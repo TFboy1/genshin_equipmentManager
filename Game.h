@@ -1,14 +1,13 @@
 #pragma once
-// Game.h
 #include"Subject.h"
-
 #include "Player.h"
-
 #include "PlayerManager.h"
 #include "PlayerFactory.h"
 #include "PlayerObserver.h"
 #include"Equipment.h"
 #include"EquipmentManager.h"
+#include "store.h"
+#include"PremiumPlayer.h"
 using namespace std;
 class Game {
 private:
@@ -16,6 +15,7 @@ private:
     PlayerManager playerManager;
     PlayerFactory playerFactory;
     Subject subject;
+    
 public:
     Game();
     ~Game();
@@ -26,5 +26,8 @@ public:
     void deletePlayer();
     Player* chosePlayer();
     void startGame();
+    void openStore(Player& player, PlayerManager& playerManager);
     
+    void PremiumPlayerSystem();
+    void chargeSystem();
 };
