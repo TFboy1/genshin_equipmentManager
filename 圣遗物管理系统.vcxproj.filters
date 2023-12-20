@@ -72,6 +72,12 @@
     <ClCompile Include="Store.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="CardCharacter.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="CardDraw.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h">
@@ -129,6 +135,12 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="Store.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CardDraw.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CardCharacter.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
