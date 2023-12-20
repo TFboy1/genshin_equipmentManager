@@ -82,6 +82,11 @@ vector<int> Player::getInventory()
 	return inventory;
 }
 
+vector<int> Player::getCharactors()
+{
+	return charactors;
+}
+
 void Player::saveInventoryToFile()
 {
 	ofstream fout("inventory.txt", ios::app);
@@ -123,6 +128,60 @@ void Player::loadInventoryFromFile()
 	fin.close();
 }
 
+void Player::saveCharactorsToFile()
+{
+	ifstream fin("inventory.txt");
+	if (!fin.is_open()) {
+		cout << "无法打开文件 'inventory.txt'！" << endl;
+		return;
+	}
+
+	inventory.clear();  // Clear existing inventory before loading from file
+
+	string line;
+	while (getline(fin, line)) {
+		stringstream ss(line);
+		string playerName;
+		string productId;
+
+		getline(ss, playerName, ',');
+		getline(ss, productId);
+
+		// Assuming the loaded inventory belongs to the current player
+		if (playerName == this->name) {
+			inventory.push_back(stoi(productId));
+		}
+	}
+
+	fin.close();
+}
+
+void Player::loadCharactorsFromFile() {
+	ifstream fin("charactors.txt");  // Change the file name to "charactors.txt"
+	if (!fin.is_open()) {
+		cout << "无法打开文件 'charactors.txt'！" << endl;
+		return;
+	}
+
+	charactors.clear();  // Clear existing characters before loading from file
+
+	string line;
+	while (getline(fin, line)) {
+		stringstream ss(line);
+		string playerName;
+		string characterId;
+
+		getline(ss, playerName, ',');
+		getline(ss, characterId);
+
+		// Assuming the loaded characters belong to the current player
+		if (playerName == this->name) {
+			charactors.push_back(stoi(characterId));
+		}
+	}
+
+	fin.close();
+}
 
 void Player::addToInventory(int productId) {
     inventory.push_back(productId);

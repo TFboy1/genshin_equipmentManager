@@ -16,7 +16,7 @@ using namespace std;
 // Player类
 class Player {
 protected:
-    int id;
+	int id;
     string name;
     int level;
     vector<Observer*> observers;
@@ -24,7 +24,7 @@ protected:
     double balance;
     EquipmentManager equipmentManager;
     vector<int> inventory;  // 存储购买的商品ID
-
+    vector<int> charactors;
 public:
     Player();
     //获取id
@@ -66,9 +66,11 @@ void setBalance(double amount);
 EquipmentManager getEquipmentManager();
 vector<Equipment>  getAllEquipment();
 vector<int> getInventory();
+vector<int> getCharactors();
 void saveInventoryToFile();
 void loadInventoryFromFile();
-
+void saveCharactorsToFile();
+void loadCharactorsFromFile();
 //背包
 void addToInventory(int productId);
 

@@ -89,6 +89,35 @@ void Game::equipmentSystem(Player* player) {
     } while (a);
 }
 
+void Game::CardDrawSystem(Player& player)
+{
+    int a;
+    int b;
+   
+    CardDraw Drawer(player);
+        cout << "欢迎来到原神角色卡池抽卡环节" << endl;
+   do{
+        cout << "抽取角色请按1，展示角色抽取历史记录请按2，退出请按0" << endl;
+        cin >> a;
+        switch (a) {
+        case 1:
+            cout << "请输入想抽取的次数" << endl;
+            cin >> b;
+            for (int i = 1; i <= b; i++)
+                Drawer.drawCard(); break;
+        case 2:
+            Drawer.DisplayDrawnCards();
+            break;
+        case 0:
+            system("cls");
+            break;
+        default:cout << "输入错误，请重新输入" << endl; break;
+        }
+    } while (a);
+}
+
+
+
 
 
 
@@ -141,7 +170,7 @@ void Game::playerSystem() {
     int a = 1;
     do {
         cout << "这是游戏角色菜单:" << endl;
-        cout << "创建一个角色请输入1，删除角色请输入2，显示所有角色请输入3，选择角色请输入4，进入VIP系统请输入5，进入商店或进行充值请按6，退出请输入0" << '\n';
+        cout << "创建一个角色请输入1，删除角色请输入2，显示所有角色请输入3，选择角色请输入4，进入VIP系统请输入5，进入商店或进行充值请按6，进入抽卡系统请按7，退出请输入0" << '\n';
         cin >> a;
         switch (a) {
         case 1:createPlayer(); break;
@@ -167,6 +196,14 @@ void Game::playerSystem() {
            return;
        }
        openStore(*selectedPlayer,playerManager); break;
+        }
+        case 7: {
+            Player* selectedPlayer = chosePlayer();
+            if (selectedPlayer == nullptr) {
+                cout << "请选择正确的角色ID再打开商店。" << endl;
+                return;
+            }
+            CardDrawSystem(*selectedPlayer); break;
         }
         case 0:break;
         default:cout << "输入错误" << endl; break;

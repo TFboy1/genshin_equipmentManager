@@ -127,6 +127,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="CardCharacter.cpp" />
+    <ClCompile Include="CardDraw.cpp" />
     <ClCompile Include="CircletofLogos.cpp" />
     <ClCompile Include="Equipment.cpp" />
     <ClCompile Include="EquipmentFactory.cpp" />
@@ -148,6 +150,8 @@
     <ClCompile Include="Subject.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="CardCharacter.h" />
+    <ClInclude Include="CardDraw.h" />
     <ClInclude Include="CircletofLogos.h" />
     <ClInclude Include="EquipmentFactory.h" />
     <ClInclude Include="EquipmentManager.h" />
