@@ -129,22 +129,18 @@
   <ItemGroup>
     <ClCompile Include="CardCharacter.cpp" />
     <ClCompile Include="CardDraw.cpp" />
-    <ClCompile Include="CircletofLogos.cpp" />
     <ClCompile Include="Equipment.cpp" />
     <ClCompile Include="EquipmentFactory.cpp" />
     <ClCompile Include="EquipmentManager.cpp" />
     <ClCompile Include="EquipmentStats.cpp" />
     <ClCompile Include="FlowerofLife.cpp" />
     <ClCompile Include="Game.cpp" />
-    <ClCompile Include="GobletofEonothem.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="PlayerFactory.cpp" />
     <ClCompile Include="PlayerManager.cpp" />
-    <ClCompile Include="PlumeofDeath.cpp" />
     <ClCompile Include="PremiumPlayer.cpp" />
     <ClCompile Include="RechargeManager.cpp" />
-    <ClCompile Include="SandsofEon.cpp" />
     <ClCompile Include="stats.cpp" />
     <ClCompile Include="Store.cpp" />
     <ClCompile Include="Subject.cpp" />
@@ -152,28 +148,28 @@
   <ItemGroup>
     <ClInclude Include="CardCharacter.h" />
     <ClInclude Include="CardDraw.h" />
-    <ClInclude Include="CircletofLogos.h" />
     <ClInclude Include="EquipmentFactory.h" />
     <ClInclude Include="EquipmentManager.h" />
     <ClInclude Include="Equipment.h" />
     <ClInclude Include="FlowerofLife.h" />
     <ClInclude Include="Game.h" />
-    <ClInclude Include="GobletofEonothem.h" />
     <ClInclude Include="Observer.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="PlayerFactory.h" />
     <ClInclude Include="PlayerManager.h" />
     <ClInclude Include="PlayerObserver.h" />
-    <ClInclude Include="PlumeofDeath.h" />
     <ClInclude Include="PremiumPlayer.h" />
     <ClInclude Include="RechargeManager.h" />
-    <ClInclude Include="SandsofEon.h" />
     <ClInclude Include="stats.h" />
     <ClInclude Include="Store.h" />
     <ClInclude Include="Subject.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram2.cd" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="equipment.txt" />
+    <Text Include="players.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

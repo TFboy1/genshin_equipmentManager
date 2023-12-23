@@ -262,7 +262,7 @@ public:
     ~GobletofEonothem();
     void initialElements();
     void strengthen();
-    void showElements();
+    //void showElements();
 private:
 
     

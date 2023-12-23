@@ -7,135 +7,172 @@
 #include <algorithm>
 #include <cstring>
 #include "Equipment.h"
-#include "CircletofLogos.h"
 #include "FlowerofLife.h"
-#include "PlumeofDeath.h"
-#include "SandsofEon.h"
-#include "GobletofEonothem.h"
 #include <functional>
 #include <random>
+#include<sstream>
 
 using namespace std;
 
 class EquipmentManager {
 public:
     EquipmentManager() {
-        loud();
+        //loud();
     }
 
-    void strengthenAll() {
+    /*bool devastateEquipment() {
         loud();
-        flowerOfLife.strengthen();
-        plumeOfDeath.strengthen();
-        sandsofEon.strengthen();
-        gobletofEonothem.strengthen();
-        circletofLogos.strengthen();
+        if (flowerOfLife.getequip() !=0 ) {
+            cout << "暂无可摧毁的圣遗物，请等待返回" << '\n';
+            Sleep(2000);
+            system("cls");
+            return false;
+        }
+        int c;
+        cout << "请确认您想摧毁圣遗物:  退出请输入0" << '\n';
+        if (flowerOfLife.getequip() == 0) cout << "确认摧毁生之花，请输入1" << '\n';
+        cin >> c;
+        if (c== 0) {
+            system("cls");
+            return false;
+        }
+        else {
+            switch (c) {
+            case 1: flowerOfLife.destroy_equip(); cout << "摧毁生之花成功" << '\n'; break;
+            }
+        }
+        Sleep(2000);
+        system("cls");
         saveEquipment();
+        return true;
+
+    }*/
+    void setPlayerId(int id)
+    {
+        this->playerId = id;
+    }
+   bool strengthenAll() {
+            
+            int d;
+            cout << "请确认您想强化圣遗物:  退出请输入0" << '\n';
+            cout<< "确认强化生之花，请输入1" << '\n';
+            cin >> d;
+            if (d == 0) {
+                system("cls");
+                return false;
+            }
+            else {
+                switch (d) {
+                case 1:  flowerOfLife.strengthen(); break;
+                }
+            }
+        Sleep(2000);
+        system("cls");
+        
+        return true;
     }
 
     bool removeEquipment() {
-        loud();
+        //loud();
         system("cls");
-        if (flowerOfLife.getcount() == 0 && plumeOfDeath.getcount() == 0 && sandsofEon.getcount() == 0 &&
-            gobletofEonothem.getcount() == 0 && circletofLogos.getcount() == 0) {
+        //cout << flowerOfLife.getequip() << '\n';
+        if (flowerOfLife.getequip() !=1) {
             cout << "暂无可拆卸的圣遗物，请等待返回" << '\n';
             Sleep(2000);
             system("cls");
             return false;
         }
         int a;
-        cout << "请选择您想拆卸的圣遗物部位:  退出请输入0" << '\n';
-        if (flowerOfLife.getcount() == 1) cout << "拆卸生之花，请输入1" << '\n';
-        if (plumeOfDeath.getcount() == 1) cout << "拆卸死之羽，请输入2" << '\n';
-        if (sandsofEon.getcount() == 1) cout << "拆卸时之沙，请输入3" << '\n';
-        if (gobletofEonothem.getcount() == 1) cout << "拆卸空之杯，请输入4" << '\n';
-        if (circletofLogos.getcount() == 1) cout << "拆卸理之冠，请输入5" << '\n';
+        cout << "请确认您想拆卸圣遗物:  退出请输入0" << '\n';
+        if (flowerOfLife.getequip() == 1) cout << "确认拆卸生之花，请输入1" << '\n';
+        
         cin >> a;
         if (a == 0) {
             system("cls");
             return false;
         }
         switch (a) {
-        case 1: flowerOfLife.falsecount(); cout << "拆卸生之花成功" << '\n'; break;
-        case 2: plumeOfDeath.falsecount(); cout << "拆卸死之羽成功" << '\n'; break;
-        case 3: sandsofEon.falsecount(); cout << "拆卸时之沙成功" << '\n'; break;
-        case 4: gobletofEonothem.falsecount(); cout << "拆卸空之杯成功" << '\n'; break;
-        case 5: circletofLogos.falsecount(); cout << "拆卸理之冠成功" << '\n'; break;
+        case 1: flowerOfLife.false_equip(); 
+            equipments.push_back(flowerOfLife);
+            equipments[0].setEquipt(0);
+            cout << "拆卸生之花成功" << '\n'; break;
+        
         }
         Sleep(2000);
         system("cls");
-        saveEquipment();
+        //saveEquipment();
         return true;
     }
 
     bool addEquipment() {
-        loud();
+        //loud();
         system("cls");
-        if (flowerOfLife.getcount() == 1 && plumeOfDeath.getcount() == 1 && sandsofEon.getcount() == 1 &&
-            gobletofEonothem.getcount() == 1 && circletofLogos.getcount() == 1) {
+        if (flowerOfLife.getequip() !=0 ) {
             cout << "暂无可装备的圣遗物，请等待返回" << '\n';
             Sleep(2000);
             system("cls");
             return false;
         }
         int b;
-        cout << "请选择您想装备的圣遗物部位:  退出请输入0" << '\n';
-        if (flowerOfLife.getcount() == 0) cout << "装备生之花，请输入1" << '\n';
-        if (plumeOfDeath.getcount() == 0) cout << "装备死之羽，请输入2" << '\n';
-        if (sandsofEon.getcount() == 0) cout << "装备时之沙，请输入3" << '\n';
-        if (gobletofEonothem.getcount() == 0) cout << "装备空之杯，请输入4" << '\n';
-        if (circletofLogos.getcount() == 0) cout << "装备理之冠，请输入5" << '\n';
+        cout << "请确认您想装备圣遗物:  退出请输入0" << '\n';
+        if (flowerOfLife.getequip() == 0) cout << "确认装备生之花，请输入1" << '\n';
+        
         cin >> b;
         if (b == 0) {
             system("cls");
             return false;
         }
         switch (b) {
-        case 1: flowerOfLife.truecount(); cout << "装备生之花成功" << '\n'; break;
-        case 2: plumeOfDeath.truecount(); cout << "装备死之羽成功" << '\n'; break;
-        case 3: sandsofEon.truecount(); cout << "装备时之沙成功" << '\n'; break;
-        case 4: gobletofEonothem.truecount(); cout << "装备空之杯成功" << '\n'; break;
-        case 5: circletofLogos.truecount(); cout << "装备理之冠成功" << '\n'; break;
+        case 1: flowerOfLife.true_equip();
+            equipments.push_back(flowerOfLife);
+            equipments[0].setEquipt(1);
+            cout << "装备生之花成功" << '\n'; break;
+        
         }
         Sleep(2000);
         system("cls");
-        saveEquipment();
+        //saveEquipment();
         return true;
     }
 
     bool displayEquipment() {
-        loud();
-        if (flowerOfLife.getcount() == 0 && plumeOfDeath.getcount() == 0 && sandsofEon.getcount() == 0 &&
-            gobletofEonothem.getcount() == 0 && circletofLogos.getcount() == 0) {
-            cout << "圣遗物都被拆卸，请等待返回" << '\n';
+        //loud();
+        if (flowerOfLife.getequip() == 0 ) {
+            cout << "圣遗物已经被拆卸，请等待返回" << '\n';
             Sleep(2000);
             system("cls");
             return false;
         }
-        if (flowerOfLife.getcount() == 1) flowerOfLife.showElements();
-        if (plumeOfDeath.getcount() == 1) plumeOfDeath.showElements();
-        if (sandsofEon.getcount() == 1) sandsofEon.showElements();
-        if (gobletofEonothem.getcount() == 1) gobletofEonothem.showElements();
-        if (circletofLogos.getcount() == 1) circletofLogos.showElements();
-        saveEquipment();
+        if (flowerOfLife.getequip() == 1)
+        flowerOfLife.showElements();
+        
+        //saveEquipment();
         return true;
     }
 
     void saveEquipment() {
-        loud();
-        if (flowerOfLife.getcount() == 1) equipments.push_back(flowerOfLife);
-        if (plumeOfDeath.getcount() == 1) equipments.push_back(plumeOfDeath);
-        if (sandsofEon.getcount() == 1) equipments.push_back(sandsofEon);
-        if (gobletofEonothem.getcount() == 1) equipments.push_back(gobletofEonothem);
-        if (circletofLogos.getcount() == 1) equipments.push_back(circletofLogos);
+        //loud();
+        //if (flowerOfLife.getequip() == 1) 
+        equipments.push_back(flowerOfLife);
+        
         for (Equipment& equipment : equipments) {
         equipment.setPlayerName(playerName);
+        equipment.setPlayerId(playerId);
         equipment.saveToFile();
         }
     }
 
     vector<Equipment> getEquipments() {
+        Equipment temp;
+        equipments.push_back(temp);
         return equipments;
+    }
+    void initEquipments(int id) {
+        equipments.push_back(flowerOfLife);
+        for (Equipment& equipment : equipments) {
+            equipment.setPlayerId(id);
+            equipment.saveToFile();
+        }
     }
     void setPlayerName(string playerName) {
         this->playerName = playerName;
@@ -143,19 +180,51 @@ public:
     string getPlayerName() {
 		return playerName;
 	}
-    void loud() {
+
+    /*void setPlayerId(int playerId)
+    {
+        this->playerId = playerId;
+    }*/
+
+    /*void loud() {
         for (Equipment& equipment : equipments) {
             equipment.loadFromFile(playerName);
+        }
+    }*/
+   
+    void readEquipment() {
+        ifstream file("equipment.txt");
+        if (file.is_open()) {
+            
+            std::string line;
+            while (getline(file,line) ){
+                istringstream ss(line);
+                vector<string> words;
+                string word;
+                while (ss >> word) {
+                    words.push_back(word);
+                }
+
+                //stoi是将一个字符串转化为数字
+                if (std::stoi(words[0]) == this->playerId) {
+                    Equipment temp;
+                    temp.setPlayerId(std::stoi(words[0]));
+                    temp.setEquipt(std::stoi(words[1]));
+                    equipments.push_back(temp);
+                    flowerOfLife.setPlayerId(std::stoi(words[0]));
+                    flowerOfLife.setEquipt(std::stoi(words[1]));
+
+                }
+            }
+            file.close();
         }
     }
 private:
     FlowerofLife flowerOfLife;
-    PlumeofDeath plumeOfDeath;
-    SandsofEon sandsofEon;
-    GobletofEonothem gobletofEonothem;
-    CircletofLogos circletofLogos;
     vector<Equipment> equipments;
-    string playerName;
+    string playerName; 
+    int playerId;
+
     
 };
 

@@ -14,7 +14,7 @@ class PlumeofDeath : public Equipment {
 public:
     PlumeofDeath();
     ~PlumeofDeath();
-   void showElements();
+   //void showElements();
     void strengthen();
     void initialElements();
 private:

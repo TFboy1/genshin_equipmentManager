@@ -4,12 +4,14 @@ Player::Player() {
 	equipments=equipmentManager.getEquipments();
 	loadInventoryFromFile();
 }
+
 //获取id
 int Player::Getid() const { return id; }
 
 void Player::Setid(int id)
 {
 		this->id = id;
+		//equipmentManager.getEquipments()[0].setPlayerId(id);
 }
 
 //获取name 
@@ -20,9 +22,10 @@ int Player::Getlevel() const { return level; }
 
 // 构造函数
 Player::Player(int id, string Name, int level,double balance)
-	: id(id), name(Name), level(level), isPremiumPlayer(false), balance(balance) {
+	: id(id), name(Name), level(level), isPremiumPlayer(false), balance(balance){
 	equipmentManager.setPlayerName(name);
 	equipments = equipmentManager.getEquipments();
+	equipmentManager.setPlayerId(id);
 }
 
 // 添加Observer

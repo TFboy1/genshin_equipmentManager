@@ -15,7 +15,7 @@ class SandsofEon : public Equipment {
 public:
     SandsofEon();
     ~SandsofEon();
-    void showElements();
+    //void showElements();
     void strengthen();
     void initialElements();
 

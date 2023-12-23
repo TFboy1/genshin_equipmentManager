@@ -18,6 +18,7 @@
 #include<algorithm>
 #include<cstring>
 #include<ctime> 
+#include <cstdlib>
 #include<windows.h>
 #include<map>
 #include "stats.h"
@@ -31,24 +32,33 @@ public:
         double energyRechange = 0, int elementalMastery = 0, double critRate = 0, double critDmg = 0, int id = 0);
     ~Equipment();
     void initializeAttributes();
-    int  getcount();
-    void falsecount();
-    void truecount();
+    int  getequip();
+    void false_equip();
+    void true_equip();
+    //void destroy_equip();
     void saveToFile();
-    void loadFromFile(string name);
-    void setPlayerName(string playerName);
+    void setEquipt(const int &n);
+    void loadFromFile(string& playerNameToFind);
+
    
+
+    
+   
+    void setPlayerName(string playerName);
+    void setPlayerId(int playerId);
+    void showElements();
     string getPlayerName();
 
     private:
-    int count;
+    int equip;//equip=0,表示未装备；equip=1，表示已装备
     
     protected:
          string playerName;
+         int playerId;
          vector<Stats> attributes;
          const vector<string> elements = {
           "防御力", "生命值", "攻击力",  "能量充能效率", "元素精通", "暴击率", "暴击伤害"};
-
+         
 
 };
 

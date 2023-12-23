@@ -15,7 +15,7 @@ class FlowerofLife : public Equipment {
 public:
     FlowerofLife();
     ~FlowerofLife();
-    void showElements();
+    //void showElements();
     void strengthen();
     void initialElements();
 

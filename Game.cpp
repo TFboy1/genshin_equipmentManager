@@ -65,13 +65,21 @@ Player* Game::chosePlayer() {
 void Game::equipmentSystem(Player* player) {
     int a = 1;
     EquipmentManager M = player->getEquipmentManager();
-
+    M.setPlayerName(player->Getname());
+    M.setPlayerId(player->Getid());
+    //
+    // M.loud();
+    M.readEquipment();
     do {
         cout << "这是圣遗物管理菜单:" << endl;
+        //cout << "展示圣遗物请输入1，强化圣遗物请输入2，退出请输入0" << '\n';
         cout << "拆卸圣遗物请输入1，装备圣遗物请输入2，强化圣遗物请输入3，展示圣遗物请输入4，退出请输入0" << '\n';
         cin >> a;
         switch (a) {
-        case 1:M.removeEquipment(); break;
+        case 1: {
+          
+        M.removeEquipment(); break;
+        }
         case 2:M.addEquipment(); break;
         case 3:if (M.getEquipments().empty()) {
             system("cls");
@@ -81,12 +89,13 @@ void Game::equipmentSystem(Player* player) {
             system("cls");
             M.strengthenAll(); break;
         }
-            
         case  4:system("cls"); M.displayEquipment(); break;
         case 0:system("cls"); break;
+        //case 5:system("cls"); M.devastateEquipment(); break;
         default:cout << "输入错误" << endl; break;
         }
     } while (a);
+    M.saveEquipment();
 }
 
 void Game::CardDrawSystem(Player& player)

@@ -48,22 +48,10 @@
     <ClCompile Include="Subject.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="CircletofLogos.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="EquipmentStats.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="FlowerofLife.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="GobletofEonothem.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="PlumeofDeath.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="SandsofEon.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="stats.cpp">
@@ -113,22 +101,10 @@
     <ClInclude Include="Subject.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="CircletofLogos.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="Equipment.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="FlowerofLife.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="GobletofEonothem.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="PlumeofDeath.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="SandsofEon.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="stats.h">
@@ -146,5 +122,13 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram2.cd" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="players.txt">
+      <Filter>资源文件</Filter>
+    </Text>
+    <Text Include="equipment.txt">
+      <Filter>资源文件</Filter>
+    </Text>
   </ItemGroup>
 </Project>

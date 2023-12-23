@@ -20,8 +20,6 @@ PlayerManager();
 ~PlayerManager();
     // Ìí¼ÓÍæ¼Ò
     void addPlayer(Player* player);
-    
-
 //  ÒÆ³ıÍæ¼Ò
 void removePlayer(Player* player);
 
