@@ -3,7 +3,7 @@
 #include <random>
 using namespace std;
 FlowerofLife::FlowerofLife() {
-  
+    attributes[1].setStats(1);
     initialElements();
 }
 
@@ -19,18 +19,8 @@ void FlowerofLife::showElements() {
 
     // Output main stats based on your logic
     // ...
-    while (true) {
-        std::random_device rd;
-        std::mt19937 gen(rd());
+    std::cout << attributes[1].getName() << attributes[1].getEle() + 2 << "%" << '\n';
 
-        std::uniform_int_distribution<int> distribution(0, attributes.size() - 1);
-        int n = distribution(gen);
-        if (attributes[n].getStats() > 0)
-        {
-            std::cout << attributes[n].getName() << attributes[n].getEle() + 2 << "%" << '\n';
-            break;
-        }
-    }
     std::cout << "\033[32m" << "¸±´ÊÌõ:" << "\033[0m" << '\n';
     for (int i = 0; i < attributes.size(); i++) {
         if (attributes[i].getStats() > 0) {

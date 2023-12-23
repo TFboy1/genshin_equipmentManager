@@ -3,8 +3,9 @@
 #include <random>
 
 SandsofEon::SandsofEon() {
-    
-      
+    Stats stats("治疗加成", 0, 0);
+    attributes.push_back(stats);
+
     initialElements();
 }
 
@@ -27,8 +28,9 @@ void SandsofEon::showElements() {
         std::uniform_int_distribution<int> distribution(0, attributes.size() - 1);
         int n = distribution(gen);
         if (attributes[n].getStats() > 0)
-        {std::cout << attributes[n].getName() << attributes[n].getEle() + 2 << "%" << '\n';
-        break;
+        {
+            std::cout << attributes[n].getName() << attributes[n].getEle() + 2 << "%" << '\n';
+            break;
         }
     }
     std::cout << "\033[32m" << "副词条:" << "\033[0m" << '\n';
@@ -54,7 +56,7 @@ void SandsofEon::initialElements() {
     std::random_device rd;
     std::mt19937 gen(rd());
 
-    std::uniform_int_distribution<int> distribution(1, attributes.size()-1);
+    std::uniform_int_distribution<int> distribution(1, attributes.size() - 1);
 
     int n = 5;
     while (n--) {

@@ -26,7 +26,7 @@ void PlayerManager::saveToFile() const {
 void PlayerManager::loadFromFile() {
     ifstream file("players.txt");
     
-        
+    int max=0;
         players.clear(); // 清空原有玩家信息
         if (file.is_open()) {
            
@@ -37,9 +37,12 @@ void PlayerManager::loadFromFile() {
             players.push_back(player);
         }
         for (const Player* player : players) {
-            if(player->Getid()!=PlayerManager::id)
-                PlayerManager::id++;
+            if (player->Getid() > max)
+                max = player->Getid();
         }
+
+        PlayerManager::id=++max;
+
         file.close();
     }
 }

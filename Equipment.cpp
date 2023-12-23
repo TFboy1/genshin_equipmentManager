@@ -24,7 +24,7 @@ void Equipment::truecount() {
 void Equipment::saveToFile()
 {
     string filename="equipment.dat";
-    ofstream outFile(filename, ios::binary);
+    ofstream outFile(filename, std::ios::app | std::ios::binary);
 
     if (!outFile.is_open()) {
         cerr << "Error opening file: " << filename << endl;

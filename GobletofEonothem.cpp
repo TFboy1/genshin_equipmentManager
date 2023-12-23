@@ -5,6 +5,10 @@
 
 GobletofEonothem::GobletofEonothem()
 {
+    Stats stats("元素伤害加成", 0, 0);
+    attributes.push_back(stats);
+    Stats stats1("物理伤害加成", 0, 0);
+    attributes.push_back(stats1);
     initialElements();
 }
 
@@ -22,11 +26,11 @@ void GobletofEonothem::initialElements() {
     int n = 5;
     while (n--) {
         int x = distribution(gen);
-        attributes[x-1].setStats(1);
-        attributes[x-1].setEle(x);
+        attributes[x - 1].setStats(1);
+        attributes[x - 1].setEle(x);
     }
-        
-    
+
+
 }
 void GobletofEonothem::strengthen() {
     for (int i = 0; i < attributes.size(); i++) {
@@ -34,12 +38,12 @@ void GobletofEonothem::strengthen() {
             attributes[i].setEle(attributes[i].getEle() + rand() % 3);
         }
     }
-    std::cout << YELLOW << "强化后:"<<RESET<< '\n';
+    std::cout << YELLOW << "强化后:" << RESET << '\n';
     showElements();
 }
 void GobletofEonothem::showElements() {
     std::cout << "\033[33m" << "空之杯:" << "\033[0m" << '\n';
-    
+
     std::cout << "\033[32m" << "主词条:" << "\033[0m" << '\n';
     while (true) {
         std::random_device rd;
@@ -47,7 +51,7 @@ void GobletofEonothem::showElements() {
 
         std::uniform_int_distribution<int> distribution(0, attributes.size() - 1);
         int n = distribution(gen);
-        if (attributes[n].getStats() > 0)
+        if (attributes[n].getStats() > 0 && (n == 0 || n == 1 || n == 2 || n == 4))
         {
             std::cout << attributes[n].getName() << attributes[n].getEle() + 2 << "%" << '\n';
             break;
@@ -56,8 +60,8 @@ void GobletofEonothem::showElements() {
     std::cout << "\033[32m" << "副词条:" << "\033[0m" << '\n';
     for (int i = 0; i < attributes.size(); i++) {
         if (attributes[i].getStats() > 0) {
-			std::cout << attributes[i].getName() << ": " << attributes[i].getEle() << "%" << '\n';
-		}
-	}
+            std::cout << attributes[i].getName() << ": " << attributes[i].getEle() << "%" << '\n';
+        }
+    }
     std::cout << '\n';
 }

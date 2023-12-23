@@ -3,7 +3,7 @@
 #include <random>
 
 CircletofLogos::CircletofLogos() {
- 
+
     initialElements();
 }
 
@@ -31,8 +31,8 @@ void CircletofLogos::showElements() {
             break;
         }
     }
-    
-   
+
+
 
     std::cout << "\033[32m" << "¸±´ÊÌõ:" << "\033[0m" << '\n';
     for (int i = 0; i < attributes.size(); i++) {

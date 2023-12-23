@@ -1,9 +1,9 @@
-#include "PlumeofDeath.h"
+ï»¿#include "PlumeofDeath.h"
 #include <random>
 
 PlumeofDeath::PlumeofDeath()
 {
-    
+    attributes[2].setStats(1);
     initialElements();
 }
 
@@ -13,22 +13,13 @@ PlumeofDeath::~PlumeofDeath()
 
 void PlumeofDeath::showElements()
 {
-    std::cout << "\033[33m" << "¿ÕÖ®±­:" << "\033[0m" << '\n';
+    std::cout << "\033[33m" << "Â¿Ã•Ã–Â®Â±Â­:" << "\033[0m" << '\n';
 
-    std::cout << "\033[32m" << "Ö÷´ÊÌõ:" << "\033[0m" << '\n';
-    while (true) {
-        std::random_device rd;
-        std::mt19937 gen(rd());
+    std::cout << "\033[32m" << "Ã–Ã·Â´ÃŠÃŒÃµ:" << "\033[0m" << '\n';
 
-        std::uniform_int_distribution<int> distribution(0, attributes.size() - 1);
-        int n = distribution(gen);
-        if (attributes[n].getStats() > 0)
-        {
-            std::cout << attributes[n].getName() << attributes[n].getEle() + 2 << "%" << '\n';
-            break;
-        }
-    }
-    std::cout << "\033[32m" << "¸±´ÊÌõ:" << "\033[0m" << '\n';
+    std::cout << attributes[2].getName() << attributes[2].getEle() + 2 << "%" << '\n';
+
+    std::cout << "\033[32m" << "Â¸Â±Â´ÃŠÃŒÃµ:" << "\033[0m" << '\n';
     for (int i = 0; i < attributes.size(); i++) {
         if (attributes[i].getStats() > 0) {
             std::cout << attributes[i].getName() << ": " << attributes[i].getEle() << "%" << '\n';
@@ -44,9 +35,9 @@ void  PlumeofDeath::strengthen()
             attributes[i].setEle(attributes[i].getEle() + rand() % 3);
         }
     }
-    std::cout << YELLOW << "Ç¿»¯ºó:" << RESET << '\n';
+    std::cout << YELLOW << "Ã‡Â¿Â»Â¯ÂºÃ³:" << RESET << '\n';
     showElements();
-	
+
 }
 
 void PlumeofDeath::initialElements()
