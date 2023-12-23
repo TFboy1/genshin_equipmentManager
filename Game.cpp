@@ -73,7 +73,8 @@ void Game::equipmentSystem(Player* player) {
     do {
         cout << "这是圣遗物管理菜单:" << endl;
         //cout << "展示圣遗物请输入1，强化圣遗物请输入2，退出请输入0" << '\n';
-        cout << "拆卸圣遗物请输入1，装备圣遗物请输入2，强化圣遗物请输入3，展示圣遗物请输入4，退出请输入0" << '\n';
+        cout << "拆卸圣遗物请输入1"<<'\n'<<"装备圣遗物请输入2"<<'\n'<<"强化圣遗物请输入3"<<'\n'<<"展示圣遗物请输入4"<<'\n'<<"退出请输入0" << '\n';
+            
         cin >> a;
         switch (a) {
         case 1: {
@@ -106,7 +107,8 @@ void Game::CardDrawSystem(Player& player)
     CardDraw Drawer(player);
         cout << "欢迎来到原神角色卡池抽卡环节" << endl;
    do{
-        cout << "抽取角色请按1，展示角色抽取历史记录请按2，退出请按0" << endl;
+        cout << "抽取角色请按1"<<'\n'<<"展示角色抽取历史记录请按2，退出请按0" << endl;
+    
         cin >> a;
         switch (a) {
         case 1:
@@ -142,7 +144,8 @@ void Game::PremiumPlayerSystem()
         int a;
         do {
             cout << "欢迎来到高级玩家系统:" << endl;
-            cout << "提供高级玩家特权请输入1，访问游戏商店请输入2，退出请输入0" << '\n';
+            cout << "提供高级玩家特权请输入1" << '\n' << "访问游戏商店请输入2，退出请输入0" << '\n';
+                
             cin >> a;
             switch (a) {
             case 1:PremiumPlayer.addPremiumBenefits(); break;
@@ -179,7 +182,8 @@ void Game::playerSystem() {
     int a = 1;
     do {
         cout << "这是游戏角色菜单:" << endl;
-        cout << "创建一个角色请输入1，删除角色请输入2，显示所有角色请输入3，进入圣遗物管理菜单请输入4，进入VIP系统请输入5，进入商店或进行充值请按6，进入抽卡系统请按7，退出请输入0" << '\n';
+        cout << "创建一个角色请输入1"<<'\n'<<"删除角色请输入2"<<'\n'<<"显示所有角色请输入3"<<'\n'<<"进入圣遗物管理菜单请输入4"<<'\n'<<"进入VIP系统请输入5"<<'\n'<<"进入商店或进行充值请按6"<<'\n'<<"进入抽卡系统请按7"<<'\n'<<"退出请输入0" << '\n';
+           
         cin >> a;
         switch (a) {
         case 1:createPlayer(); break;
