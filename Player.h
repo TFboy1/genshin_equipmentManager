@@ -40,17 +40,6 @@ public:
     // 构造函数
     Player(int id, string name, int level,double balance);
 
-    // 添加Observer
-    void addObserver(Observer* observer);
-
-    // 移除Observer
-    void removeObserver(Observer* observer);
-
-    // 通知Observer
-    void notifyObservers();
-
-   
-
     // 设置玩家等级
     void setLevel(int newLevel);
     

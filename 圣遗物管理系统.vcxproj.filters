@@ -36,16 +36,10 @@
     <ClCompile Include="EquipmentManager.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="RechargeManager.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="PremiumPlayer.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="EquipmentFactory.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="Subject.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="EquipmentStats.cpp">
@@ -83,22 +77,10 @@
     <ClInclude Include="EquipmentManager.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="RechargeManager.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="PremiumPlayer.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="EquipmentFactory.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="Observer.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="PlayerObserver.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="Subject.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="Equipment.h">

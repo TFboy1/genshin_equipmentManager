@@ -140,10 +140,8 @@
     <ClCompile Include="PlayerFactory.cpp" />
     <ClCompile Include="PlayerManager.cpp" />
     <ClCompile Include="PremiumPlayer.cpp" />
-    <ClCompile Include="RechargeManager.cpp" />
     <ClCompile Include="stats.cpp" />
     <ClCompile Include="Store.cpp" />
-    <ClCompile Include="Subject.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CardCharacter.h" />
@@ -153,16 +151,12 @@
     <ClInclude Include="Equipment.h" />
     <ClInclude Include="FlowerofLife.h" />
     <ClInclude Include="Game.h" />
-    <ClInclude Include="Observer.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="PlayerFactory.h" />
     <ClInclude Include="PlayerManager.h" />
-    <ClInclude Include="PlayerObserver.h" />
     <ClInclude Include="PremiumPlayer.h" />
-    <ClInclude Include="RechargeManager.h" />
     <ClInclude Include="stats.h" />
     <ClInclude Include="Store.h" />
-    <ClInclude Include="Subject.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram2.cd" />

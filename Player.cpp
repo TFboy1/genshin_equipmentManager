@@ -28,27 +28,11 @@ Player::Player(int id, string Name, int level,double balance)
 	equipmentManager.setPlayerId(id);
 }
 
-// 添加Observer
-void Player::addObserver(Observer* observer) {
-	observers.push_back(observer);
-}
-
-// 移除Observer
-void Player::removeObserver(Observer* observer) {
-	observers.erase(remove(observers.begin(), observers.end(), observer), observers.end());
-}
-
-// 通知Observer
-void Player::notifyObservers() {
-	for (Observer* observer : observers) {
-		observer->update();
-	}
-}
 
 // 设置玩家等级
 void Player::setLevel(int newLevel) {
 	level = newLevel;
-	notifyObservers();
+	
 }
 
 
@@ -56,7 +40,7 @@ void Player::setLevel(int newLevel) {
 // 设置是否是高级玩家
 void Player::setPremiumPlayer(bool premium) {
 	isPremiumPlayer = premium;
-	notifyObservers();
+	
 }
 
 // 获取余额
@@ -67,7 +51,7 @@ double Player::getBalance() const {
 // 设置余额
 void Player::setBalance(double amount) {
 	balance = amount;
-	notifyObservers();
+	
 }
 
 EquipmentManager Player::getEquipmentManager()

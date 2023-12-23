@@ -4,7 +4,7 @@
 #include "Player.h"
 #include "PlayerManager.h"
 #include "PlayerFactory.h"
-#include "PlayerObserver.h"
+
 #include"Equipment.h"
 #include"EquipmentManager.h"
 #include "store.h"

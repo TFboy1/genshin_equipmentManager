@@ -20,8 +20,8 @@ Player* Game::createPlayer()
     cin >> name;
     Player* player = playerFactory.createPlayer(name, level,balance);
     playerManager.addPlayer(player);
-    PlayerObserver playerObserve(player->Getid());
-    subject.attach(&playerObserve);
+    
+    
 
     cout << "显示此时所有玩家" << endl;
     playerManager.displayAllPlayers();
