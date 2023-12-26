@@ -7,13 +7,9 @@
 #include"EquipmentManager.h"
 #include "Observer.h"
 #include <sstream>
-
 #include <fstream>
 using namespace std;
 
-
-
-// Player类
 class Player {
 protected:
 	int id;
@@ -23,45 +19,29 @@ protected:
     bool isPremiumPlayer;
     double balance;
     EquipmentManager equipmentManager;
-    vector<int> inventory;  // 存储购买的商品ID
+    vector<int> inventory;
     vector<int> charactors;
+
 public:
     Player();
-    //获取id
-    int Getid() const;
-    void Setid(int id);
-  
-    //获取name 
-    string Getname() const;
-
-    //获取level
-    int Getlevel() const;
-
-    // 构造函数
-    Player(int id, string name, int level,double balance);
-
-    // 设置玩家等级
-    void setLevel(int newLevel);
-    
-
-// 设置是否是高级玩家
-void setPremiumPlayer(bool premium);
-
-// 获取余额
-double getBalance() const;
-
-// 设置余额
-void setBalance(double amount); 
-EquipmentManager getEquipmentManager();
-vector<Equipment>  getAllEquipment();
-vector<int> getInventory();
-vector<int> getCharactors();
-void saveInventoryToFile();
-void loadInventoryFromFile();
-void saveCharactorsToFile();
-void loadCharactorsFromFile();
-//背包
-void addToInventory(int productId);
+    int Getid() const; //获取id
+    void Setid(int id);//设置id
+    string Getname() const;//获取name  
+    int Getlevel() const;//获取level
+    Player(int id, string name, int level,double balance);// 构造函数
+    void setLevel(int newLevel);// 设置玩家等级
+    void setPremiumPlayer(bool premium);// 设置是否是高级玩家
+    double getBalance() const;// 获取余额
+    void setBalance(double amount); // 设置余额
+    EquipmentManager getEquipmentManager();//获取玩家对象的装备管理系统
+    vector<Equipment>  getAllEquipment();
+    vector<int> getInventory();//获取背包
+    vector<int> getCharactors();//获取抽卡角色信息
+    void saveInventoryToFile();//保存背包信息到文件中
+    void loadInventoryFromFile();//加载背包信息文件
+    void saveCharactorsToFile();//保存抽卡角色信息到文件中
+    void loadCharactorsFromFile();//加载抽卡角色信息文件
+    void addToInventory(int productId);//保存到背包
 
 private :
     vector<Equipment> equipments;

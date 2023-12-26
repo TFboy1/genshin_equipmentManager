@@ -10,8 +10,5 @@ public:
 private:
 	static PlayerFactory instance;
 	static int playerCounter;
-
-
-
 };
 

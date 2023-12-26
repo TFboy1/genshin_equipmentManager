@@ -1,8 +1,6 @@
-// FlowerofLife.h
 #pragma once
 #ifndef FLOWEROFLIFE_H
 #define FLOWEROFLIFE_H
-
 #include <vector>
 #include <iostream>
 #include <cstdlib>
@@ -15,12 +13,8 @@ class FlowerofLife : public Equipment {
 public:
     FlowerofLife();
     ~FlowerofLife();
-    //void showElements();
-    void strengthen();
-    void initialElements();
-
-private:
-    
+    void strengthen();//强化生之花
+    void initialElements();//初始化生之花
 };
 
 #endif

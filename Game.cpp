@@ -1,292 +1,290 @@
-ï»¿// Game.cpp
 #include "Game.h"
 
-Game::Game() {
-    // Constructor implementation, if needed
-    cout << RED << "åŽŸç¥ž" << RESET << "å¯åŠ¨" <<  "ï¼ï¼" << RESET << std::endl;
+Game::Game()
+{
+    cout << RED << "Ô­Éñ" << RESET << "Æô¶¯"
+         << "£¡£¡" << RESET << std::endl;
 }
 
-Game::~Game() {
-    // Destructor implementation, if needed
-    cout << "å‰é¢åŒºåŸŸä»¥åŽå†æ¥æŽ¢ç´¢å§ï¼ï¼" << endl;
+Game::~Game()
+{
+    cout << "Ç°ÃæÇøÓòÒÔºóÔÙÀ´Ì½Ë÷°É£¡£¡" << endl;
 }
 
-Player* Game::createPlayer()
+Player *Game::createPlayer()
 {
     string name;
     int level = 0;
     double balance = 0;
-    cout << "è¯·è¾“å…¥è§’è‰²åï¼š" << endl;
+    cout << "ÇëÊäÈë½ÇÉ«Ãû£º" << endl;
     cin >> name;
-    Player* player = playerFactory.createPlayer(name, level,balance);
+    Player *player = playerFactory.createPlayer(name, level, balance);
     playerManager.addPlayer(player);
-    
-    
-
-    cout << "æ˜¾ç¤ºæ­¤æ—¶æ‰€æœ‰çŽ©å®¶" << endl;
+    cout << "ÏÔÊ¾´ËÊ±ËùÓÐÍæ¼Ò" << endl;
     playerManager.displayAllPlayers();
     return player;
 }
-void Game::deletePlayer() {
+void Game::deletePlayer()
+{
     int id;
-    cout << "è¯·è¾“å…¥è¦åˆ é™¤çš„è§’è‰²id" << endl;
+    cout << "ÇëÊäÈëÒªÉ¾³ýµÄ½ÇÉ«id" << endl;
     cin >> id;
-    Player* player = playerManager.getPlayerById(id);
+    Player *player = playerManager.getPlayerById(id);
     playerManager.removePlayer(player);
-    cout << "åˆ é™¤æˆåŠŸ" << endl;
+    cout << "É¾³ý³É¹¦" << endl;
 }
-Player* Game::chosePlayer() {
+Player *Game::chosePlayer()
+{
     int id;
-    while (true) {
-        cout << "è¯·è¾“å…¥è¦é€‰æ‹©çš„è§’è‰²id:" << endl;
+    while (true)
+    {
+        cout << "ÇëÊäÈëÒªÑ¡ÔñµÄ½ÇÉ«id:" << endl;
         cin >> id;
-        const std::type_info& idType = typeid(id);
-        
-        Player* player = playerManager.getPlayerById(id);
-        if (player == nullptr) {
-            
+        const std::type_info &idType = typeid(id);
+
+        Player *player = playerManager.getPlayerById(id);
+        if (player == nullptr)
+        {
+
             return nullptr;
         }
-        else {
+        else
+        {
             break;
         }
     }
-    /*cout << "è¯·è¾“å…¥è¦é€‰æ‹©çš„è§’è‰²id:" << endl;
-    cin >> id;
-    const std::type_info& idType = typeid(id);
-    if (idType != typeid(int)) {
-        cout << "è¯·è¾“å…¥æ­£ç¡®çš„ID" << endl;
-        return nullptr;
-    }*/
-    Player* player = playerManager.getPlayerById(id);
-
+    Player *player = playerManager.getPlayerById(id);
     return player;
 }
-void Game::equipmentSystem(Player* player) {
+void Game::equipmentSystem(Player *player)
+{
     int a = 1;
     EquipmentManager M = player->getEquipmentManager();
     M.setPlayerName(player->Getname());
     M.setPlayerId(player->Getid());
-    //
-    // M.loud();
     M.readEquipment();
-    do {
-        cout << "è¿™æ˜¯åœ£é—ç‰©ç®¡ç†èœå•:" << endl;
-        //cout << "å±•ç¤ºåœ£é—ç‰©è¯·è¾“å…¥1ï¼Œå¼ºåŒ–åœ£é—ç‰©è¯·è¾“å…¥2ï¼Œé€€å‡ºè¯·è¾“å…¥0" << '\n';
-        cout << "æ‹†å¸åœ£é—ç‰©è¯·è¾“å…¥1"<<'\n'<<"è£…å¤‡åœ£é—ç‰©è¯·è¾“å…¥2"<<'\n'<<"å¼ºåŒ–åœ£é—ç‰©è¯·è¾“å…¥3"<<'\n'<<"å±•ç¤ºåœ£é—ç‰©è¯·è¾“å…¥4"<<'\n'<<"é€€å‡ºè¯·è¾“å…¥0" << '\n';
-            
+    do
+    {
+        cout << "ÕâÊÇÊ¥ÒÅÎï¹ÜÀí²Ëµ¥:" << endl;
+        cout << "²ðÐ¶Ê¥ÒÅÎïÇëÊäÈë1" << '\n'
+             << "×°±¸Ê¥ÒÅÎïÇëÊäÈë2" << '\n'
+             << "Ç¿»¯Ê¥ÒÅÎïÇëÊäÈë3" << '\n'
+             << "Õ¹Ê¾Ê¥ÒÅÎïÇëÊäÈë4" << '\n'
+             << "ÍË³öÇëÊäÈë0" << '\n';
+
         cin >> a;
-        switch (a) {
-        case 1: {
-          
-        M.removeEquipment(); break;
+        switch (a)
+        {
+        case 1:
+        {
+            M.removeEquipment();
+            break;
         }
-        case 2:M.addEquipment(); break;
-        case 3:if (M.getEquipments().empty()) {
+        case 2:
+            M.addEquipment();
+            break;
+        case 3:
+            if (M.getEquipments().empty())
+            {
+                system("cls");
+                M.displayEquipment();
+                break;
+            }
+            else
+            {
+                system("cls");
+                M.strengthenAll();
+                break;
+            }
+        case 4:
             system("cls");
-            M.displayEquipment(); break;
-        }
-              else {
+            M.displayEquipment();
+            break;
+        case 0:
             system("cls");
-            M.strengthenAll(); break;
-        }
-        case  4:system("cls"); M.displayEquipment(); break;
-        case 0:system("cls"); break;
-        //case 5:system("cls"); M.devastateEquipment(); break;
-        default:cout << "è¾“å…¥é”™è¯¯" << endl; break;
+            break;
+        default:
+            cout << "ÊäÈë´íÎó" << endl;
+            break;
         }
     } while (a);
     M.saveEquipment();
 }
 
-void Game::CardDrawSystem(Player& player)
+void Game::CardDrawSystem(Player &player)
 {
     int a;
     int b;
-   
+
     CardDraw Drawer(player);
-        cout << "æ¬¢è¿Žæ¥åˆ°åŽŸç¥žè§’è‰²å¡æ± æŠ½å¡çŽ¯èŠ‚" << endl;
-   do{
-        cout << "æŠ½å–è§’è‰²è¯·æŒ‰1"<<'\n'<<"å±•ç¤ºè§’è‰²æŠ½å–åŽ†å²è®°å½•è¯·æŒ‰2ï¼Œé€€å‡ºè¯·æŒ‰0" << endl;
-    
+    cout << "»¶Ó­À´µ½Ô­Éñ½ÇÉ«¿¨³Ø³é¿¨»·½Ú" << endl;
+    do
+    {
+        cout << "³éÈ¡½ÇÉ«Çë°´1" << '\n'
+             << "Õ¹Ê¾½ÇÉ«³éÈ¡ÀúÊ·¼ÇÂ¼Çë°´2£¬ÍË³öÇë°´0" << endl;
+
         cin >> a;
-        switch (a) {
+        switch (a)
+        {
         case 1:
-            cout << "è¯·è¾“å…¥æƒ³æŠ½å–çš„æ¬¡æ•°" << endl;
+            cout << "ÇëÊäÈëÏë³éÈ¡µÄ´ÎÊý" << endl;
             cin >> b;
             for (int i = 1; i <= b; i++)
-                Drawer.drawCard(); break;
+                Drawer.drawCard();
+            break;
         case 2:
             Drawer.DisplayDrawnCards();
             break;
         case 0:
             system("cls");
             break;
-        default:cout << "è¾“å…¥é”™è¯¯ï¼Œè¯·é‡æ–°è¾“å…¥" << endl; break;
+        default:
+            cout << "ÊäÈë´íÎó£¬ÇëÖØÐÂÊäÈë" << endl;
+            break;
         }
     } while (a);
 }
-
-
-
-
-
 
 void Game::PremiumPlayerSystem()
 {
-    Player* selectedPlayer = chosePlayer();
-    if (selectedPlayer == nullptr) {
-        cout << "è¯·é€‰æ‹©æ­£ç¡®çš„è§’è‰²IDå†æ‰“å¼€å•†åº—ã€‚" << endl;
-        return;
+ on3:   Player *selectedPlayer = chosePlayer();
+    if (selectedPlayer == nullptr)
+    {
+        cout << "ÇëÑ¡ÔñÕýÈ·µÄ½ÇÉ«IDÔÙ´ò¿ªÉÌµê¡£" << endl;
+        goto on3;
     }
-    PremiumPlayer  PremiumPlayer(*selectedPlayer,playerManager);
-    if (PremiumPlayer.getBalance() > 30) {
+    PremiumPlayer PremiumPlayer(*selectedPlayer, playerManager);
+    if (PremiumPlayer.getBalance() > 30)
+    {
         int a;
-        do {
-            cout << "æ¬¢è¿Žæ¥åˆ°é«˜çº§çŽ©å®¶ç³»ç»Ÿ:" << endl;
-            cout << "æä¾›é«˜çº§çŽ©å®¶ç‰¹æƒè¯·è¾“å…¥1" << '\n' << "è®¿é—®æ¸¸æˆå•†åº—è¯·è¾“å…¥2ï¼Œé€€å‡ºè¯·è¾“å…¥0" << '\n';
-                
+        do
+        {
+            cout << "»¶Ó­À´µ½¸ß¼¶Íæ¼ÒÏµÍ³:" << endl;
+            cout << "Ìá¹©¸ß¼¶Íæ¼ÒÌØÈ¨ÇëÊäÈë1" << '\n'
+                 << "·ÃÎÊÓÎÏ·ÉÌµêÇëÊäÈë2£¬ÍË³öÇëÊäÈë0" << '\n';
+
             cin >> a;
-            switch (a) {
-            case 1:PremiumPlayer.addPremiumBenefits(); break;
-            case 2:PremiumPlayer.accessGameStore(); break;
-            case 0:break;
-            default:cout << "è¾“å…¥é”™è¯¯" << endl; break;
+            switch (a)
+            {
+            case 1:
+                PremiumPlayer.addPremiumBenefits();
+                break;
+            case 2:
+                PremiumPlayer.accessGameStore();
+                break;
+            case 0:
+                break;
+            default:
+                cout << "ÊäÈë´íÎó" << endl;
+                break;
             }
         } while (a);
     }
-    else {
-        cout << "æ‚¨ä¸æ˜¯VIP" << endl;
+    else
+    {
+        cout << "Äú²»ÊÇVIP" << endl;
     }
-    
 }
 void Game::chargeSystem()
 {
-    // æ£€æŸ¥æ˜¯å¦é€‰æ‹©äº†è§’è‰²
-    Player* selectedPlayer = chosePlayer();
-    if (selectedPlayer == nullptr) {
-        cout << "è¯·é€‰æ‹©æ­£ç¡®çš„è§’è‰²IDå†æ‰“å¼€å•†åº—ã€‚" << endl;
+    Player *selectedPlayer = chosePlayer();
+    if (selectedPlayer == nullptr)
+    {
+        cout << "ÇëÑ¡ÔñÕýÈ·µÄ½ÇÉ«IDÔÙ´ò¿ªÉÌµê¡£" << endl;
         return;
     }
-
-    // åˆ›å»ºä¸€ä¸ªå¸¦æœ‰æ‰€é€‰è§’è‰²çš„å•†åº—å®žä¾‹
-    Store store(*selectedPlayer,playerManager);
+    Store store(*selectedPlayer, playerManager);
     double amount;
-    cout << "è¯·è¾“å…¥å……å€¼é‡‘é¢ï¼š" << endl;
+    cout << "ÇëÊäÈë³äÖµ½ð¶î£º" << endl;
     cin >> amount;
     store.deposit(amount);
     playerManager.saveToFile();
-   
 }
-void Game::playerSystem() {
+void Game::playerSystem()
+{
     int a = 1;
-    do {
-        cout << "è¿™æ˜¯æ¸¸æˆè§’è‰²èœå•:" << endl;
-        cout << "åˆ›å»ºä¸€ä¸ªè§’è‰²è¯·è¾“å…¥1"<<'\n'<<"åˆ é™¤è§’è‰²è¯·è¾“å…¥2"<<'\n'<<"æ˜¾ç¤ºæ‰€æœ‰è§’è‰²è¯·è¾“å…¥3"<<'\n'<<"è¿›å…¥åœ£é—ç‰©ç®¡ç†èœå•è¯·è¾“å…¥4"<<'\n'<<"è¿›å…¥VIPç³»ç»Ÿè¯·è¾“å…¥5"<<'\n'<<"è¿›å…¥å•†åº—æˆ–è¿›è¡Œå……å€¼è¯·æŒ‰6"<<'\n'<<"è¿›å…¥æŠ½å¡ç³»ç»Ÿè¯·æŒ‰7"<<'\n'<<"é€€å‡ºè¯·è¾“å…¥0" << '\n';
-           
+    do
+    {
+        cout << "ÕâÊÇÓÎÏ·½ÇÉ«²Ëµ¥:" << endl;
+        cout << "´´½¨Ò»¸ö½ÇÉ«ÇëÊäÈë1" << '\n'
+             << "É¾³ý½ÇÉ«ÇëÊäÈë2" << '\n'
+             << "ÏÔÊ¾ËùÓÐ½ÇÉ«ÇëÊäÈë3" << '\n'
+             << "½øÈëÊ¥ÒÅÎï¹ÜÀí²Ëµ¥ÇëÊäÈë4" << '\n'
+             << "½øÈëVIPÏµÍ³ÇëÊäÈë5" << '\n'
+             << "½øÈëÉÌµê»ò½øÐÐ³äÖµÇë°´6" << '\n'
+             << "½øÈë³é¿¨ÏµÍ³Çë°´7" << '\n'
+             << "ÍË³öÇëÊäÈë0" << '\n';
+
         cin >> a;
-        switch (a) {
-        case 1:createPlayer(); break;
-        case 2:deletePlayer(); break;
-        case 3:playerManager.displayAllPlayers(); break;
-        case 4: {
-            Player* chosedPlayer = chosePlayer();
-            if (chosedPlayer != nullptr) {
-                equipmentSystem(chosedPlayer); break;
+        switch (a)
+        {
+        case 1:
+            createPlayer();
+            break;
+        case 2:
+            deletePlayer();
+            break;
+        case 3:
+            playerManager.displayAllPlayers();
+            break;
+        case 4:
+        {
+         on1:   Player *chosedPlayer = chosePlayer();
+            if (chosedPlayer != nullptr)
+            {
+                equipmentSystem(chosedPlayer);
+                break;
             }
             else
             {
-                cout << "è¯·è¾“å…¥æ­£ç¡®çš„ID" << endl;
+                cout << "ÇëÊäÈëÕýÈ·µÄID" << endl;
+                goto on1;
             }
         }
-        /*case 5: openStore(); break;*/
-        case 5: PremiumPlayerSystem(); break;
-        case 6: {
-            // æ£€æŸ¥æ˜¯å¦é€‰æ‹©äº†è§’è‰²
-       Player* selectedPlayer = chosePlayer();
-       if (selectedPlayer == nullptr) {
-           cout << "è¯·é€‰æ‹©æ­£ç¡®çš„è§’è‰²IDå†æ‰“å¼€å•†åº—ã€‚" << endl;
-           return;
-       }
-       openStore(*selectedPlayer,playerManager); break;
-        }
-        case 7: {
-            Player* selectedPlayer = chosePlayer();
-            if (selectedPlayer == nullptr) {
-                cout << "è¯·é€‰æ‹©æ­£ç¡®çš„è§’è‰²IDå†æ‰“å¼€å•†åº—ã€‚" << endl;
-                return;
+        case 5:
+            PremiumPlayerSystem();
+            break;
+        case 6:
+        {
+         on2:   Player *selectedPlayer = chosePlayer();
+            if (selectedPlayer == nullptr)
+            {
+                cout << "ÇëÑ¡ÔñÕýÈ·µÄ½ÇÉ«IDÔÙ´ò¿ªÉÌµê¡£" << endl;
+                goto on2;
             }
-            CardDrawSystem(*selectedPlayer); break;
+            openStore(*selectedPlayer, playerManager);
+            break;
         }
-        case 0:break;
-        default:cout << "è¾“å…¥é”™è¯¯" << endl; break;
+        case 7:
+        {
+         on4:   Player *selectedPlayer = chosePlayer();
+            if (selectedPlayer == nullptr)
+            {
+                cout << "ÇëÑ¡ÔñÕýÈ·µÄ½ÇÉ«IDÔÙ´ò¿ªÉÌµê¡£" << endl;
+                goto on4;
+            }
+            CardDrawSystem(*selectedPlayer);
+            break;
+        }
+        case 0:
+            break;
+        default:
+            cout << "ÊäÈë´íÎó" << endl;
+            break;
         }
     } while (a);
 }
-void Game::startGame() {
+void Game::startGame()
+{
 
     PlayerManager playerManager;
     PlayerFactory playerFactory = PlayerFactory::getInstance();
-
-    cout << "æ¬¢è¿Žæ¥åˆ°"<<BLUE<<"æ¨¡æ‹ŸåŽŸç¥žç³»ç»Ÿï¼š" <<RESET<< endl;
-    /*cout << "å¼€å§‹æ¸¸æˆè¯·æŒ‰1" << endl;
-    int choice = 0;
-    cin>> choice;
-    while (true) {
-        if (choice == 1 || choice == 0) {
-            break;
-        }
-        else {
-            cout << "è¾“å…¥é”™è¯¯ï¼Œè¯·é‡æ–°è¾“å…¥" << endl;
-            cin >> choice;
-        }
-    }  */
+    cout << "»¶Ó­À´µ½" << BLUE << "Ä£ÄâÔ­ÉñÏµÍ³£º" << RESET << endl;
     playerSystem();
-
-
-
-    /*cout<<"æ˜¯å¦åˆ›å»ºä¸€ä¸ªè§’è‰²"<<endl;
-    cout<<"1.æ˜¯"<<endl;
-    cout<<"2.å¦"<<endl;
-
-    int choice;
-    cin>>choice;
-    if (choice == 1) {
-
-        Player* player=createPlayer();
-        playerSystem();
-    }
-    else if(choice==2){
-        cout<<"è¯·å…ˆåˆ›å»ºä¸€ä¸ªè§’è‰²å†å¼€å§‹æ¸¸æˆï¼š"<<endl;
-        cout<<"ç»“æŸæ¸¸æˆæˆ–è€…ç»§ç»­åˆ›å»ºä¸€ä¸ªè§’è‰²ï¼Ÿ"<<endl;
-        cout<<"1.ç»“æŸæ¸¸æˆ"<<endl;
-        cout<<"2.ç»§ç»­åˆ›å»ºä¸€ä¸ªè§’è‰²"<<endl;
-        int choice1;
-        cin>>choice1;
-        if (choice1 == 1) {
-            cout<<"æ¸¸æˆç»“æŸ"<<endl;
-        }
-        else if(choice1==2){
-
-            createPlayer();
-            playerSystem();
-        }
-        else {
-            cout<<"è¾“å…¥é”™è¯¯"<<endl;
-
-        }
-    }
-    else {
-            cout<<"è¾“å…¥é”™è¯¯"<<endl;
-    }*/
-
-
 }
 
-void Game::openStore(Player& player,PlayerManager &playerManager)
+void Game::openStore(Player &player, PlayerManager &playerManager)
 {
     Store store(player, playerManager);
     store.openStore();
 }
-
-

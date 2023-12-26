@@ -1,7 +1,6 @@
 #pragma once
 #ifndef EQUIPMENTMANAGER_H
 #define EQUIPMENTMANAGER_H
-
 #include <iostream>
 #include <vector>
 #include <algorithm>
@@ -16,66 +15,38 @@ using namespace std;
 
 class EquipmentManager {
 public:
-    EquipmentManager() {
-        //loud();
-    }
+    EquipmentManager() {}
 
-    /*bool devastateEquipment() {
-        loud();
-        if (flowerOfLife.getequip() !=0 ) {
-            cout << "暂无可摧毁的圣遗物，请等待返回" << '\n';
-            Sleep(2000);
-            system("cls");
-            return false;
-        }
-        int c;
-        cout << "请确认您想摧毁圣遗物:  退出请输入0" << '\n';
-        if (flowerOfLife.getequip() == 0) cout << "确认摧毁生之花，请输入1" << '\n';
-        cin >> c;
-        if (c== 0) {
-            system("cls");
-            return false;
-        }
-        else {
-            switch (c) {
-            case 1: flowerOfLife.destroy_equip(); cout << "摧毁生之花成功" << '\n'; break;
-            }
-        }
-        Sleep(2000);
-        system("cls");
-        saveEquipment();
-        return true;
-
-    }*/
+    //设置玩家ID
     void setPlayerId(int id)
     {
         this->playerId = id;
     }
+
+    //强化圣遗物
    bool strengthenAll() {
-            
-            int d;
-            cout << "请确认您想强化圣遗物:  退出请输入0" << '\n';
-            cout<< "确认强化生之花，请输入1" << '\n';
-            cin >> d;
-            if (d == 0) {
-                system("cls");
-                return false;
+        int d;
+        cout << "请确认您想强化圣遗物:  退出请输入0" << '\n';
+        cout<< "确认强化生之花，请输入1" << '\n';
+        cin >> d;
+        if (d == 0) {
+            system("cls");
+            return false;
+        }
+        else {
+            switch (d) {
+            case 1:  flowerOfLife.strengthen(); break;
             }
-            else {
-                switch (d) {
-                case 1:  flowerOfLife.strengthen(); break;
-                }
-            }
+        }
         Sleep(2000);
         system("cls");
         
         return true;
     }
 
+   //拆卸圣遗物
     bool removeEquipment() {
-        //loud();
         system("cls");
-        //cout << flowerOfLife.getequip() << '\n';
         if (flowerOfLife.getequip() !=1) {
             cout << "暂无可拆卸的圣遗物，请等待返回" << '\n';
             Sleep(2000);
@@ -100,12 +71,12 @@ public:
         }
         Sleep(2000);
         system("cls");
-        //saveEquipment();
         return true;
     }
 
+
+    //装备圣遗物
     bool addEquipment() {
-        //loud();
         system("cls");
         if (flowerOfLife.getequip() !=0 ) {
             cout << "暂无可装备的圣遗物，请等待返回" << '\n';
@@ -131,12 +102,11 @@ public:
         }
         Sleep(2000);
         system("cls");
-        //saveEquipment();
         return true;
     }
 
+    //拆卸圣遗物
     bool displayEquipment() {
-        //loud();
         if (flowerOfLife.getequip() == 0 ) {
             cout << "圣遗物已经被拆卸，请等待返回" << '\n';
             Sleep(2000);
@@ -145,14 +115,11 @@ public:
         }
         if (flowerOfLife.getequip() == 1)
         flowerOfLife.showElements();
-        
-        //saveEquipment();
         return true;
     }
 
+    //保存装备信息
     void saveEquipment() {
-        //loud();
-        //if (flowerOfLife.getequip() == 1) 
         equipments.push_back(flowerOfLife);
         
         for (Equipment& equipment : equipments) {
@@ -162,11 +129,14 @@ public:
         }
     }
 
+    //获取装备信息
     vector<Equipment> getEquipments() {
         Equipment temp;
         equipments.push_back(temp);
         return equipments;
     }
+
+    //初始化装备
     void initEquipments(int id) {
         equipments.push_back(flowerOfLife);
         for (Equipment& equipment : equipments) {
@@ -174,24 +144,18 @@ public:
             equipment.saveToFile();
         }
     }
+
+    //设置玩家姓名
     void setPlayerName(string playerName) {
         this->playerName = playerName;
     }
+
+    //获取玩家姓名
     string getPlayerName() {
 		return playerName;
 	}
-
-    /*void setPlayerId(int playerId)
-    {
-        this->playerId = playerId;
-    }*/
-
-    /*void loud() {
-        for (Equipment& equipment : equipments) {
-            equipment.loadFromFile(playerName);
-        }
-    }*/
    
+    //从文件中读取装备信息
     void readEquipment() {
         ifstream file("equipment.txt");
         if (file.is_open()) {
@@ -205,7 +169,6 @@ public:
                     words.push_back(word);
                 }
 
-                //stoi是将一个字符串转化为数字
                 if (std::stoi(words[0]) == this->playerId) {
                     Equipment temp;
                     temp.setPlayerId(std::stoi(words[0]));
@@ -219,13 +182,12 @@ public:
             file.close();
         }
     }
+
 private:
     FlowerofLife flowerOfLife;
     vector<Equipment> equipments;
     string playerName; 
     int playerId;
-
-    
 };
 
 #endif

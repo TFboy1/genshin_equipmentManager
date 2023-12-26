@@ -1,7 +1,8 @@
-#include"Player.h"
-Player::Player() {
+#include "Player.h"
+Player::Player()
+{
 	equipmentManager.setPlayerName(name);
-	equipments=equipmentManager.getEquipments();
+	equipments = equipmentManager.getEquipments();
 	loadInventoryFromFile();
 }
 
@@ -10,48 +11,46 @@ int Player::Getid() const { return id; }
 
 void Player::Setid(int id)
 {
-		this->id = id;
-		//equipmentManager.getEquipments()[0].setPlayerId(id);
+	this->id = id;
 }
 
-//获取name 
+//获取name
 string Player::Getname() const { return name; }
 
 //获取level
 int Player::Getlevel() const { return level; }
 
 // 构造函数
-Player::Player(int id, string Name, int level,double balance)
-	: id(id), name(Name), level(level), isPremiumPlayer(false), balance(balance){
+Player::Player(int id, string Name, int level, double balance)
+	: id(id), name(Name), level(level), isPremiumPlayer(false), balance(balance)
+{
 	equipmentManager.setPlayerName(name);
 	equipments = equipmentManager.getEquipments();
 	equipmentManager.setPlayerId(id);
 }
 
-
 // 设置玩家等级
-void Player::setLevel(int newLevel) {
+void Player::setLevel(int newLevel)
+{
 	level = newLevel;
-	
 }
 
-
-
 // 设置是否是高级玩家
-void Player::setPremiumPlayer(bool premium) {
+void Player::setPremiumPlayer(bool premium)
+{
 	isPremiumPlayer = premium;
-	
 }
 
 // 获取余额
-double Player::getBalance() const {
+double Player::getBalance() const
+{
 	return balance;
 }
 
 // 设置余额
-void Player::setBalance(double amount) {
+void Player::setBalance(double amount)
+{
 	balance = amount;
-	
 }
 
 EquipmentManager Player::getEquipmentManager()
@@ -77,28 +76,30 @@ vector<int> Player::getCharactors()
 void Player::saveInventoryToFile()
 {
 	ofstream fout("inventory.txt", ios::app);
-	if (!fout) {
+	if (!fout)
+	{
 		cout << "文件打开失败！" << endl;
 		return;
 	}
-	for (int i = 0; i < inventory.size(); i++) {
-		fout<<name<<"," << inventory[i] << endl;
-	}
+	int i = inventory.size()-1;
+	fout << name << "," << inventory[i] << endl;
 	fout.close();
 }
 
 void Player::loadInventoryFromFile()
 {
 	ifstream fin("inventory.txt");
-	if (!fin.is_open()) {
+	if (!fin.is_open())
+	{
 		cout << "无法打开文件 'inventory.txt'！" << endl;
 		return;
 	}
 
-	inventory.clear();  // Clear existing inventory before loading from file
+	inventory.clear();
 
 	string line;
-	while (getline(fin, line)) {
+	while (getline(fin, line))
+	{
 		stringstream ss(line);
 		string playerName;
 		string productId;
@@ -106,8 +107,8 @@ void Player::loadInventoryFromFile()
 		getline(ss, playerName, ',');
 		getline(ss, productId);
 
-		// Assuming the loaded inventory belongs to the current player
-		if (playerName == this->name) {
+		if (playerName == this->name)
+		{
 			inventory.push_back(stoi(productId));
 		}
 	}
@@ -118,15 +119,17 @@ void Player::loadInventoryFromFile()
 void Player::saveCharactorsToFile()
 {
 	ifstream fin("inventory.txt");
-	if (!fin.is_open()) {
+	if (!fin.is_open())
+	{
 		cout << "无法打开文件 'inventory.txt'！" << endl;
 		return;
 	}
 
-	inventory.clear();  // Clear existing inventory before loading from file
+	inventory.clear();
 
 	string line;
-	while (getline(fin, line)) {
+	while (getline(fin, line))
+	{
 		stringstream ss(line);
 		string playerName;
 		string productId;
@@ -134,8 +137,8 @@ void Player::saveCharactorsToFile()
 		getline(ss, playerName, ',');
 		getline(ss, productId);
 
-		// Assuming the loaded inventory belongs to the current player
-		if (playerName == this->name) {
+		if (playerName == this->name)
+		{
 			inventory.push_back(stoi(productId));
 		}
 	}
@@ -143,17 +146,20 @@ void Player::saveCharactorsToFile()
 	fin.close();
 }
 
-void Player::loadCharactorsFromFile() {
-	ifstream fin("charactors.txt");  // Change the file name to "charactors.txt"
-	if (!fin.is_open()) {
+void Player::loadCharactorsFromFile()
+{
+	ifstream fin("charactors.txt");
+	if (!fin.is_open())
+	{
 		cout << "无法打开文件 'charactors.txt'！" << endl;
 		return;
 	}
 
-	charactors.clear();  // Clear existing characters before loading from file
+	charactors.clear();
 
 	string line;
-	while (getline(fin, line)) {
+	while (getline(fin, line))
+	{
 		stringstream ss(line);
 		string playerName;
 		string characterId;
@@ -161,8 +167,8 @@ void Player::loadCharactorsFromFile() {
 		getline(ss, playerName, ',');
 		getline(ss, characterId);
 
-		// Assuming the loaded characters belong to the current player
-		if (playerName == this->name) {
+		if (playerName == this->name)
+		{
 			charactors.push_back(stoi(characterId));
 		}
 	}
@@ -170,8 +176,9 @@ void Player::loadCharactorsFromFile() {
 	fin.close();
 }
 
-void Player::addToInventory(int productId) {
-    inventory.push_back(productId);
+void Player::addToInventory(int productId)
+{
+	inventory.push_back(productId);
 	saveInventoryToFile();
-    cout << "商品已添加到您的库存。" << endl;
+	cout << "商品已添加到您的库存。" << endl;
 }

@@ -1,18 +1,14 @@
 #include "stats.h"
 
-
-Stats::Stats(const std::string& name, int stats, int ele)
-	: name(name), stats(stats), ele(ele)
+Stats::Stats(const std::string &name, int stats, int ele)
+    : name(name), stats(stats), ele(ele)
 {
 }
 
-Stats::~Stats()
-{
-}
+Stats::~Stats() {}
 
-const std::string& Stats::getName() const
+const std::string &Stats::getName() const
 {
-    // TODO: 在此处插入 return 语句
     return name;
 }
 

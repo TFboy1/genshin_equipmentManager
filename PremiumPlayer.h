@@ -6,8 +6,8 @@
 #include <cstring>
 #include"Player.h"
 #include"PlayerManager.h"
-
 #include "Store.h"
+
 using namespace std;
 
 class PremiumPlayer:public Player{
@@ -15,14 +15,12 @@ private:
     Store *store;
     PlayerManager playerManager;
     Player &player;
+
 public:
-    // 构造函数
-   /* PremiumPlayer(Player& player);*/
     PremiumPlayer(Player& player, PlayerManager& playerManager);
     ~PremiumPlayer();
-    void addPremiumBenefits();
-    void accessGameStore();
-    PlayerManager getPlayerManager();
+    void addPremiumBenefits();//高级玩家特权菜单
+    void accessGameStore();//访问游戏商店
 };
 
-#endif // PREMIUM_PLAYER_H
+#endif

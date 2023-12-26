@@ -1,7 +1,6 @@
 #pragma once
 #ifndef Equipment_H
 #define Equipment_H
-// ANSI 转义码
 #define RESET   "\033[0m"
 #define BOLD    "\033[1m"
 #define ITALIC  "\033[3m"
@@ -31,35 +30,28 @@ public:
     Equipment(int count = 1, int hp = 0, int atk = 0, int def = 0, double Hp = 0, double Atk = 0, double Def = 0,
         double energyRechange = 0, int elementalMastery = 0, double critRate = 0, double critDmg = 0, int id = 0);
     ~Equipment();
-    void initializeAttributes();
-    int  getequip();
-    void false_equip();
-    void true_equip();
-    //void destroy_equip();
-    void saveToFile();
-    void setEquipt(const int &n);
-    void loadFromFile(string& playerNameToFind);
-
-   
-
-    
-   
-    void setPlayerName(string playerName);
-    void setPlayerId(int playerId);
-    void showElements();
-    string getPlayerName();
+    void initializeAttributes();//初始化装备属性
+    int  getequip();//获取装备状态
+    void false_equip();//未装备
+    void true_equip();//未装备
+    void saveToFile();//将装备信息保存到文件
+    void setEquipt(const int &n);//设定装备
+    void loadFromFile(string& playerNameToFind);//从文件中加载装备信息
+    void setPlayerName(string playerName);//设置玩家姓名
+    void setPlayerId(int playerId);//设置玩家ID
+    void showElements();//展示圣遗物
+    string getPlayerName();//获取玩家姓名
 
     private:
     int equip;//equip=0,表示未装备；equip=1，表示已装备
-    
+ 
     protected:
          string playerName;
          int playerId;
          vector<Stats> attributes;
          const vector<string> elements = {
-          "防御力", "生命值", "攻击力",  "能量充能效率", "元素精通", "暴击率", "暴击伤害"};
-         
-
+          "防御力", "生命值", "攻击力",  "能量充能效率", "元素精通", "暴击率", "暴击伤害"
+         };
 };
 
 #endif
