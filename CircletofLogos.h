@@ -11,16 +11,16 @@
 #include "Equipment.h"
 #include "Stats.h"
 
-class CircletofLogos : public Equipment {
+class CircletofLogos : public Equipment
+{
 public:
     CircletofLogos();
     ~CircletofLogos();
-    //void showElements();
+    // void showElements();
     void strengthen();
     void initialElements();
 
 private:
-    
 };
 
 #endif

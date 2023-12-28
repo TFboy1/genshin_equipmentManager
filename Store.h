@@ -1,55 +1,50 @@
 #ifndef STORE_H
 #define STORE_H
-
 #include <iostream>
 #include <vector>
-#include "player.h" // 引用Player类的头文件
+#include "player.h"
 #include <fstream>
-#include"PlayerManager.h"
+#include "PlayerManager.h"
 using namespace std;
 
-class Store {
+class Store
+{
 private:
-    struct Product {
+    struct Product
+    {
         int id;
-        string name;  // 添加商品名称
+        string name; //商品名称
         double price;
     };
     PlayerManager playerManager;
     vector<Product> products;
-    Player& player; // 使用引用
+    Player &player;
 
 public:
-    
-    Store(Player& player, PlayerManager& playerManager);
-    // 构造函数接受Player的引用
-    ~Store(); // 析构函数
+    Store(Player &player, PlayerManager &playerManager);
+    ~Store();
 
     void showPurchaed();
-
     void openStore();
 
-    // 商品管理
-    void addProduct(int id, const string& name, double price);  // 修改参数，添加商品名称
+    //商品管理
+    void addProduct(int id, const string &name, double price);
     void discount();
+    void rediscount();
     void removeProduct(int id);
 
-    // 余额管理
+    //余额管理
     double getPlayerBalance() const;
     void deposit(double amount);
     bool withdraw(double amount);
 
-    // 显示商品信息
-    void displayProducts() const;
+    void displayProducts() const; //显示商品信息
 
-    // 购买商品
-    bool purchaseProduct(int productId);
+    bool purchaseProduct(int productId); //购买商品
 
-    void manageStore();
+    void saveProductsToFile(); //保存商品信息到文件中
 
-    void saveProductsToFile();
-
-    void loadProductsFromFile();
+    void loadProductsFromFile(); //加载商品信息文件
 };
 
-#endif // STORE_H
+#endif

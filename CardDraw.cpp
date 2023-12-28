@@ -1,11 +1,11 @@
 #include "CardDraw.h"
-#include<cstdlib>
-#include<ctime>
-#include"CardCharacter.h"
+#include <cstdlib>
+#include <ctime>
+#include "CardCharacter.h"
 using namespace std;
-CardDraw::CardDraw(Player &player):player(player)
+CardDraw::CardDraw(Player &player) : player(player)
 {
-	
+
     const char name1[] = "刻晴";
     const char name2[] = "宵宫";
     const char name3[] = "雷电影";
@@ -79,50 +79,49 @@ CardDraw::CardDraw(Player &player):player(player)
 
 void CardDraw::saveCharactorsToFile()
 {
-    
-    std::ofstream outputFile("charactors.txt", std::ios::out);
 
-    if (!outputFile.is_open()) {
+    std::ofstream outputFile("charactors.txt", std::ios::out|std::ios::app);
+
+    if (!outputFile.is_open())
+    {
         std::cerr << "Error opening file for writing: charactors.txt" << std::endl;
         return;
     }
 
-    // Iterate through characters and write only the IDs to the file
-    for (const auto& character : drawnCards) {
-        outputFile <<player.Getname()<<"," << character.getId() << std::endl;
+    for (const auto &character : drawnCards)
+    {
+        outputFile << player.Getname() << "," << character.getId() << std::endl;
     }
 
     outputFile.close();
-    
 }
-
 
 CardCharacter CardDraw::drawCard()
 {
-	int randomIndex = rand() % CardPool.size();
-	CardCharacter drawnCard = CardPool[randomIndex];
-	drawnCards.push_back(drawnCard);
+    int randomIndex = rand() % CardPool.size();
+    CardCharacter drawnCard = CardPool[randomIndex];
+    player.setBalance(player.getBalance() - 200);
+    drawnCards.push_back(drawnCard);
     saveCharactorsToFile();
-	return drawnCard;
+
+    return drawnCard;
 }
-
-
 
 void CardDraw::DisplayDrawnCards() const
 {
     player.loadCharactorsFromFile();
-	cout << "卡池抽取记录" << endl;
-    for(auto&charactor: player.getCharactors())
-	for (const auto& card : CardPool) {
-        if (card.getId() == charactor) {
-            cout << "角色名：" << card.GetName() << endl;
-            cout << "角色属性：" << card.GetElement() << endl;
-            cout << "角色等级：" << card.GetLevel() << endl;
-            cout << "角色生命值：" << card.GetHP() << endl;
-            cout << "角色攻击力：" << card.GetATK() << endl;
-            cout << "角色防御值：" << card.GetDef() << endl;
+    cout << "卡池抽取记录" << endl;
+    for (auto &charactor : player.getCharactors())
+        for (const auto &card : CardPool)
+        {
+            if (card.getId() == charactor)
+            {
+                cout << "角色名：" << card.GetName() << endl;
+                cout << "角色属性：" << card.GetElement() << endl;
+                cout << "角色等级：" << card.GetLevel() << endl;
+                cout << "角色生命值：" << card.GetHP() << endl;
+                cout << "角色攻击力：" << card.GetATK() << endl;
+                cout << "角色防御值：" << card.GetDef() << endl;
+            }
         }
-		
-	}
 }
-

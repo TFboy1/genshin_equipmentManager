@@ -130,9 +130,6 @@
     <ClCompile Include="CardCharacter.cpp" />
     <ClCompile Include="CardDraw.cpp" />
     <ClCompile Include="Equipment.cpp" />
-    <ClCompile Include="EquipmentFactory.cpp" />
-    <ClCompile Include="EquipmentManager.cpp" />
-    <ClCompile Include="EquipmentStats.cpp" />
     <ClCompile Include="FlowerofLife.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="main.cpp" />
@@ -146,7 +143,6 @@
   <ItemGroup>
     <ClInclude Include="CardCharacter.h" />
     <ClInclude Include="CardDraw.h" />
-    <ClInclude Include="EquipmentFactory.h" />
     <ClInclude Include="EquipmentManager.h" />
     <ClInclude Include="Equipment.h" />
     <ClInclude Include="FlowerofLife.h" />
@@ -159,11 +155,11 @@
     <ClInclude Include="Store.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="ClassDiagram2.cd" />
-  </ItemGroup>
-  <ItemGroup>
     <Text Include="equipment.txt" />
     <Text Include="players.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram.cd" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

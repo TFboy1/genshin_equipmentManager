@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="CardCharacter" Collapsed="true">
+    <Position X="6" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAAAAAAAAAAAAACAgAAJQAEEAACAwAAAAAAIBgI=</HashCode>
+      <FileName>CardCharacter.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CardDraw" Collapsed="true">
+    <Position X="7.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAkIAgAAEAAAAAQAAAAAAAAAAAJAAAAAAAAAAA=</HashCode>
+      <FileName>CardDraw.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EquipmentManager" Collapsed="true">
+    <Position X="9.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EEICAQAACAAAAgIAABEEAAAAAAABAAgACCAAAAAABAA=</HashCode>
+      <FileName>EquipmentManager.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Equipment" Collapsed="true">
+    <Position X="3.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAQIACAACIxAAQAEAAAQgAAAAEAAAACAQIAAAAAA=</HashCode>
+      <FileName>Equipment.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FlowerofLife" Collapsed="true">
+    <Position X="3.5" Y="1.75" Width="1.5" />
+    <InheritanceLine Type="Equipment" FixedToPoint="true">
+      <Path>
+        <Point X="4.25" Y="1.048" />
+        <Point X="4.25" Y="1.375" />
+        <Point X="4.125" Y="1.375" />
+        <Point X="4.125" Y="1.75" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABAAAAAAAAAAAABAIgAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>FlowerofLife.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Game" Collapsed="true">
+    <Position X="6" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAESAAAAAAAAAAAAACAAIAKAAAiAAABAMQAAAAAAAgg=</HashCode>
+      <FileName>Game.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Player" Collapsed="true">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAKACBAIEAgAFAAAGGgAABIAAEEAAgCgAAGAQAAAkA=</HashCode>
+      <FileName>Player.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PlayerFactory" Collapsed="true">
+    <Position X="7.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAIAAAAAEAAAAABAAAQAQQAAAAAAAAA=</HashCode>
+      <FileName>PlayerFactory.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PlayerManager" Collapsed="true">
+    <Position X="9.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAABAAAAAAAAAAAAAAIAEgAGAACAAAIBAQAAAAAgA=</HashCode>
+      <FileName>PlayerManager.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PremiumPlayer" Collapsed="true">
+    <Position X="0.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAAAAAAAAAAQAAAAAAIAABAAABEAAAAAAAAAA=</HashCode>
+      <FileName>PremiumPlayer.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Stats" Collapsed="true">
+    <Position X="6" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABEQAAAQAAAAAAIAAAAAAAAAAAAEAABAAAAEIBAACAA=</HashCode>
+      <FileName>stats.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Store" Collapsed="true">
+    <Position X="7.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAACAAAAAAAQAgAiAAAAAAAAIEAABQABEAAIBwIACAA=</HashCode>
+      <FileName>Store.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Microsoft YaHei UI" Size="9" />
+</ClassDiagram>
